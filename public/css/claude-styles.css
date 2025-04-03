@@ -1,0 +1,294 @@
+/* Container for overall return (item being unhidden) */
+#data-return-element {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  margin-right: 3rem;
+}
+
+/* ul container for list of articles */
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.article-pic-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ARTICLE STYLES */
+
+/* li item */
+.article-list-item {
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #2c3e50;
+  border-right: 4px solid #2c3e50;
+}
+
+/* Article Card Styling (type article)*/
+.article-element {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Article Title */
+.article-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* Article Date */
+.article-date {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+/* Article Content */
+.article-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.article-content p {
+  margin-bottom: 1.2rem;
+}
+
+.article-content a {
+  color: #3b82f6;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+  transition: border-color 0.2s;
+}
+
+.article-content h3 {
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+  color: #1e293b;
+}
+
+.article-content h4 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.75rem;
+  color: #334155;
+}
+
+.article-content blockquote {
+  border-left: 4px solid #94a3b8;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #475569;
+}
+
+.article-content pre {
+  background-color: #f8fafc;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: monospace;
+  margin: 1.5rem 0;
+  border: 1px solid #e2e8f0;
+}
+
+.article-content code {
+  font-family: monospace;
+  background-color: #f1f5f9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* -----------
+PICS STYLES */
+
+.pic-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  width: 100%;
+}
+
+/* List item container */
+.pic-list-item {
+  position: relative;
+  /* Set a fixed height based on default 3:2 aspect ratio */
+  height: 0;
+  padding-bottom: 66.67%; /* This creates a 3:2 aspect ratio container */
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+  background-color: transparent; /* Transparent background */
+  overflow: hidden; /* Keep overflow hidden to prevent image from going outside container */
+}
+
+/* Image styling */
+.pic-item {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain; /* This ensures the entire image is visible */
+  transition: all 0.5s ease;
+}
+
+.pic-list-item:hover .pic-item {
+  transform: translate(-50%, -50%) scale(1.5); /* Scale to 1.5x, keeping centered */
+}
+
+/* COLLAPSE STYLES */
+/* ---------------------- */
+
+/* Modern Collapsible Component Styling */
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  cursor: default;
+  user-select: none;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  /* border-left: 3px solid #2c3e50;  */
+}
+/* Match the article border color from article-list-item */
+
+.collapsible-header:hover {
+  background-color: #b3d9ff;
+}
+
+.collapsible-header:active {
+  transform: scale(0.99);
+}
+
+/* Modern arrow styling - circular background with elegant arrow */
+.collapsible-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 14px;
+  background-color: #f2f3f5;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Using a chevron instead of triangle for more modern look */
+.collapsible-arrow::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2.5px solid #2c3e50; /* Match site's primary color */
+  border-bottom: 2.5px solid #2c3e50;
+  transform: rotate(-45deg) translate(-1px, -1px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Expanded state - rotate to point downward */
+.collapsible-arrow.expanded {
+  background-color: #e9ecef; /* Neutral gray instead of blue */
+}
+
+.collapsible-arrow.expanded::before {
+  transform: rotate(45deg) translate(-1px, -1px);
+  border-color: #2c3e50; /* Keep consistent with site colors */
+}
+
+.collapsible-title {
+  font-size: 1.7rem; /* Even larger text size */
+  font-weight: 600;
+  color: #2c3e50; /* Match site's text colors */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 42px);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.article-pic-list-collapse .collapsible-title {
+  font-size: 1.5rem;
+}
+
+.article-pic-list-collapse .collapsible-arrow {
+  font-size: 1rem;
+}
+
+.article-pic-list-collapse .collapsible-header {
+  width: 12%; /* Only take up half the container width */
+  margin: 0 auto; /* Center the header in the container */
+  /* margin-bottom: 1rem; */
+  justify-content: center; /* Center the content horizontally inside the header */
+  /* text-align: right; */
+  background-color: #e2e2e2;
+  padding: 12px 12px;
+  /* UNFUCK THE PADDING HERE */
+}
+
+/* Hover effect without color change */
+.article-pic-list-collapse .collapsible-header:hover {
+  background-color: #b3d9ff;
+}
+
+/* Container for the collapsible content */
+.collapsible-content {
+  max-height: 10000px;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease, padding 0.3s ease;
+  opacity: 1;
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+/* Hidden state */
+.collapsible-content.hidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Replace the hover border color with your site's theme color */
+.collapsible-header:hover {
+  border-left-color: #334155; /* Darker shade of your site's color theme */
+}
+
+.collapsible-header.expanded {
+  border-left-color: #2c3e50;
+  background-color: #f8fafc;
+}
