@@ -1,5 +1,6 @@
 //TO DO:
 
+//1. FOR BACKEND JS Functions, add in the function name to Jsdocs, take out the fucnt separators
 //1. ADD in JSDOCS to models; db file; controller files
 //1. Figure out TG display !!!!!!!!
 
