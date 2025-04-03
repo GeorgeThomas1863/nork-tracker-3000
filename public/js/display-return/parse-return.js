@@ -4,6 +4,15 @@ import { buildPicList } from "./pic-display.js";
 import { buildArticleList } from "./article-display.js";
 import { buildComboList } from "./combo-display.js";
 
+/**
+ * Parses returned data from backend and builds appropriate DOM elements by running
+ * appropriate function based on data type
+ * @function parseDataReturn
+ * @param {Object} inputData - The data returned from the backend
+ * @param {Array} inputData.dataArray - Array of data items (articles, pictures, or both)
+ * @param {string} inputData.dataType - Type of data to determine display method
+ * @returns {Promise<HTMLElement>} Container element with the parsed and formatted data
+ */
 export const parseDataReturn = async (inputData) => {
   const { dataArray, dataType } = inputData;
 

@@ -1,6 +1,11 @@
 import buildCollapseDisplay from "./collapse-item.js";
 
-//accepts data array, returns array
+/**
+ * Builds a ul element containing multiple li elements each of which have parsed article data from data return
+ * @function buildArticleList
+ * @param {Array<Object>} inputData - Array of article objects
+ * @returns {Promise<HTMLElement>} A DOM element containing the list of articles
+ */
 export const buildArticleList = async (inputData) => {
   const articleListElement = document.createElement("ul");
   articleListElement.className = "article-list";
@@ -16,6 +21,13 @@ export const buildArticleList = async (inputData) => {
   return articleListElement;
 };
 
+/**
+ * Creates a li item containing parsed data for single article, collapsible funcationlity added here
+ * @function getArticleListItem
+ * @param {Object} article - Article data object
+ * @param {boolean} isFirst - Whether this is the first article in the list
+ * @returns {Promise<HTMLElement>} A DOM list item element containing the article
+ */
 export const getArticleListItem = async (article, isFirst) => {
   const articleListItem = document.createElement("li");
   articleListItem.className = "article-list-item";
@@ -27,6 +39,15 @@ export const getArticleListItem = async (article, isFirst) => {
   return articleListItem;
 };
 
+/**
+ * Creates an article element by parsing article data (sends result to be added to li)
+ * @function getArticleElement
+ * @param {Object} article - Article data object
+ * @param {string} article.title - The title of the article
+ * @param {string} article.date - The date of the article
+ * @param {string} article.content - The content of the article
+ * @returns {Promise<HTMLElement>} A formatted DOM article element
+ */
 export const getArticleElement = async (article) => {
   const articleElement = document.createElement("article");
   articleElement.className = "article-element";

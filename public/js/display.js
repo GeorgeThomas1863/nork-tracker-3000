@@ -1,14 +1,24 @@
 import d from "./define-things.js";
 import { parseDataReturn } from "./display-return/parse-return.js";
 
-//HIDE ARRAY
+/**
+ * Hides an array of DOM elements by adding the 'hidden' class
+ * @function hideArray
+ * @param {HTMLElement[]} inputs - Array of DOM elements to hide
+ * @returns {Promise<void>} Promise that resolves when all elements are hidden
+ */
 const hideArray = async (inputs) => {
   for (const input of inputs) {
     input.classList.add("hidden");
   }
 };
 
-//UNHIDE ARRAY
+/**
+ * Unhides / displays an array of DOM elements by removing the 'hidden' class
+ * @function unhideArray
+ * @param {HTMLElement[]} inputs - Array of DOM elements to show
+ * @returns {Promise<void>} Promise that resolves when all elements are shown
+ */
 const unhideArray = async (inputs) => {
   for (const input of inputs) {
     input.classList.remove("hidden");
@@ -16,6 +26,12 @@ const unhideArray = async (inputs) => {
   }
 };
 
+/**
+ * Updates display based on which action button was clicked
+ * @function runActionButtonDisplay
+ * @param {string} buttonClicked - ID of the button that was clicked
+ * @returns {Promise<void>} Promise that resolves when display is updated
+ */
 export const runActionButtonDisplay = async (buttonClicked) => {
   //adult way with switch case
   switch (buttonClicked) {
@@ -29,6 +45,12 @@ export const runActionButtonDisplay = async (buttonClicked) => {
   }
 };
 
+/**
+ * Updates display based on scrape type selection
+ * @function runScrapeTypeDisplay
+ * @param {string} buttonClicked - Value of the selected scrape type
+ * @returns {Promise<void>} Promise that resolves when display is updated
+ */
 export const runScrapeTypeDisplay = async (buttonClicked) => {
   //hide everything to start
   await hideArray(d.listItemArray);
@@ -56,6 +78,12 @@ export const runScrapeTypeDisplay = async (buttonClicked) => {
   }
 };
 
+/**
+ * Updates display based on scrape to / destination selection
+ * @function runScrapeToDisplay
+ * @param {string} buttonClicked - Value of the selected scrape destination
+ * @returns {Promise<void>} Promise that resolves when display is updated
+ */
 export const runScrapeToDisplay = async (buttonClicked) => {
   //hide start
   await hideArray([d.tgIdListItem]);
@@ -66,7 +94,14 @@ export const runScrapeToDisplay = async (buttonClicked) => {
   }
 };
 
-//parses json array
+/**
+ * Parses / renders returned data from backend to DOM, passes most stuff to return parse functions
+ * then unhides the return data display container / element
+ * @function displayDataReturn
+ * @param {Object} inputData - Data object returned from backend
+ * @param {Array} inputData.dataArray - Array of scraped data items
+ * @returns {Promise<void>} Promise that resolves when data is displayed
+ */
 export const displayDataReturn = async (inputData) => {
   //check if data received
   if (!inputData || !inputData.dataArray) return;

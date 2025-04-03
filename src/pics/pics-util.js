@@ -1,7 +1,10 @@
 import CONFIG from "../../config/scrape-config.js";
 import dbModel from "../../models/db-model.js";
 
-//PIC HELPER FUNCTIONS
+/**
+ * Creates an array of date strings (YYYYMM) for current month / year and adjacent months (needed for kcna url format)
+ * @returns {Promise<Array<string>>} Array of date strings (current month and one month before/after)
+ */
 export const getDateArray = async () => {
   const currentDate = new Date();
   const dateArray = [];
@@ -25,7 +28,14 @@ export const getDateArray = async () => {
   return dateArray;
 };
 
-//get array of new pics to download  //find dif between pics downloaded and pics posted
+//---------
+
+/**
+ * Retrieves Pic Array from mongo (for downloading or uploading) based on input param (string); works by
+ * comparing collection names
+ * @param {string} type - Type of pic Array to get [options: "picsToDownload" or "picsToUpload"]
+ * @returns {Promise<Array<Object>>} Array of pic objects for uploading / downloading
+ */
 export const getPicArray = async (type) => {
   let params = "";
 
@@ -50,7 +60,13 @@ export const getPicArray = async (type) => {
   return picArray;
 };
 
-//calc start id
+//------------
+
+/**
+ * Calculates the current startId for where to look for new pics (+- 200), will default to config start setting
+ *if no kcnaId exists in db
+ * @returns {Promise<number>} Maximum of either kcnaId value or CONFIG.currentId setting (for startId)
+ */
 export const getCurrentKcnaId = async () => {
   const dataModel = new dbModel({ keyToLookup: "kcnaId" }, CONFIG.picCollection);
   const maxId = await dataModel.findMaxId();

@@ -51,8 +51,10 @@ export const scrapeArticlesClick = async (inputParams) => {
   return returnObj;
 };
 
+//----------------------
+
 /**
- * Main function to scrape articles from the source website
+ * Runs Full ARTICLE scrape process (scraping article content from kcna)
  * @returns {Promise<Array|null>} Array of article objects or null if no new articles
  */
 export const runScrapeArticles = async () => {

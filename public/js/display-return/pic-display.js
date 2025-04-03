@@ -1,3 +1,10 @@
+/**
+ * Builds ul element containing li array of pictures posteed WITH each article (if any exist)
+ * @function buildArticlePicList
+ * @param {Object} inputData - Article data object
+ * @param {Array} [inputData.articlePicArray] - Array of picture objects associated with the article
+ * @returns {Promise<HTMLElement|null>} A DOM element containing the picture list or null if no pictures
+ */
 export const buildArticlePicList = async (inputData) => {
   //check if no pics
   if (!inputData || !inputData.articlePicArray || inputData.articlePicArray.length === 0) return null;
@@ -14,7 +21,12 @@ export const buildArticlePicList = async (inputData) => {
   return picList;
 };
 
-//standard pic list display
+/**
+ * Builds ul element by creating and appending li array of pics; for STANDALONE pic display (not with articles)
+ * @function buildPicList
+ * @param {Array<Object>} inputData - Array of picture objects
+ * @returns {Promise<HTMLElement>} A DOM element containing the picture list
+ */
 export const buildPicList = async (inputData) => {
   const picList = document.createElement("ul");
   picList.className = "pic-list";
@@ -27,7 +39,12 @@ export const buildPicList = async (inputData) => {
   return picList;
 };
 
-//pic input is an object
+/**
+ * Builds li with pic data a single picture
+ * @function getPicListItem
+ * @param {Object} pic - Picture data object
+ * @returns {Promise<HTMLElement>} A DOM list item containing the picture
+ */
 const getPicListItem = async (pic) => {
   const picListItem = document.createElement("li");
   picListItem.className = "pic-list-item";
@@ -38,6 +55,14 @@ const getPicListItem = async (pic) => {
   return picListItem;
 };
 
+/**
+ * Builds img element for single pic by parsing pic data
+ * Defines path to stored pic on fs as img src
+ * @function getPicElement
+ * @param {Object} pic - Picture data object
+ * @param {string} pic.picPath - Path to the picture file
+ * @returns {Promise<HTMLElement>} An img element with the picture
+ */
 const getPicElement = async (pic) => {
   const picElement = document.createElement("img");
   picElement.className = "pic-item";

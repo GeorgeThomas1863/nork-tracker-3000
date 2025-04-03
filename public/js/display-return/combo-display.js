@@ -3,6 +3,12 @@ import buildCollapseDisplay from "./collapse-item.js";
 import { buildArticlePicList } from "./pic-display.js";
 import { getArticleElement } from "./article-display.js";
 
+/**
+ * Creates an ul element by building array of li elements with combined article AND picture elements
+ * @function buildComboList
+ * @param {Array<Object>} inputData - Array of article objects with pictures
+ * @returns {Promise<HTMLElement>} A DOM element containing the list of articles with pictures
+ */
 export const buildComboList = async (inputData) => {
   //define things
   const comboListElement = document.createElement("ul");
@@ -12,7 +18,7 @@ export const buildComboList = async (inputData) => {
   let isFirst = true;
   //loop through each article
   for (const article of inputData) {
-    const comboListItem = await getComboListItem(article, isFirst);
+    const comboListItem = await buildComboListItem(article, isFirst);
     comboListElement.appendChild(comboListItem);
     isFirst = false;
   }
@@ -20,7 +26,14 @@ export const buildComboList = async (inputData) => {
   return comboListElement;
 };
 
-export const getComboListItem = async (article, isFirst) => {
+/**
+ * Creates li element containing combo article AND pic data
+ * @function buildComboListItem
+ * @param {Object} article - Article data object with pictures
+ * @param {boolean} isFirst - Whether this is the first article in the list
+ * @returns {Promise<HTMLElement>} A DOM list item containing article content and pictures
+ */
+export const buildComboListItem = async (article, isFirst) => {
   const comboListItem = document.createElement("li");
   comboListItem.className = "article-list-item";
 

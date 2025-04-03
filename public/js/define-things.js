@@ -1,5 +1,4 @@
-//putting everything inside an obj =
-
+//Defines all frontend dom elements, puts elements into obj for easier seleciton
 const d = {
   //action buttons
   scrapeKcnaActionButton: document.getElementById("scrape-kcna-action-button"),
@@ -16,8 +15,6 @@ const d = {
   scrapeToListItem: document.getElementById("scrapeTo-list-item"),
   tgIdListItem: document.getElementById("tgId-list-item"),
 
-  //drop down IS FUCKED USE: scrapeBoth: document.getElementById("scrapeType")[0].value to select
-  //ANSWER: had forgot to assign id's to the drop down options (just had the fucking values defined)
   scrapeType: document.getElementById("scrapeType"),
   scrapeBoth: document.getElementById("scrapeBoth"),
   scrapePics: document.getElementById("scrapePics"),
@@ -25,7 +22,6 @@ const d = {
   scrapeURL: document.getElementById("scrapeURL"),
   restartAuto: document.getElementById("restartAuto"),
 
-  //referencing VIA drop down is fucked; use select element
   scrapeTo: document.getElementById("scrapeTo"),
   displayHere: document.getElementById("displayHere"),
   displayTG: document.getElementById("displayTG"),
@@ -45,11 +41,9 @@ const d = {
   //define return display and make pretty elements
   dataReturnWrapper: document.getElementById("data-return-wrapper"),
   dataReturnElement: document.getElementById("data-return-element"),
-  // makePrettyUpdatesElement: document.getElementById("make-pretty-button"),
-  // undoButtonElement: document.getElementById("undo-button"),
 };
 
-//add in array
+//add in array to obj
 d.listItemArray = [d.urlInputListItem, d.pullNewDataListItem, d.howManyListItem, d.scrapeToListItem, d.tgIdListItem];
 
 export default d;

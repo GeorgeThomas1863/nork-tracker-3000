@@ -1,3 +1,11 @@
+/**
+ * Creates / builds a collapsible UI component with toggle functionality for any input element (mostly li's)
+ * @function buildCollapseDisplay
+ * @param {string} titleInput - Title for the collapsible section
+ * @param {HTMLElement} contentInput - DOM element to be placed inside the collapsible section
+ * @param {boolean} [startExpanded=false] - Whether the section should be expanded by default
+ * @returns {Promise<HTMLElement>} A list item containing the collapsible component
+ * */
 const buildCollapseDisplay = async (titleInput, contentInput, startExpanded = false) => {
   //define / create things
   const collapseListItem = document.createElement("li");
@@ -29,9 +37,6 @@ const buildCollapseDisplay = async (titleInput, contentInput, startExpanded = fa
   if (!startExpanded) {
     collapseContent.classList.add("hidden");
   }
-
-  //set arrow //NEED to start using below syntax for if / else
-  // startExpanded ? (arrow.textContent = "▼") : ((arrow.textContent = "▶"), collapseContent.classList.add("hidden"));
 
   //Set title
   collapseTitle.textContent = titleInput;

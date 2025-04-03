@@ -5,6 +5,10 @@ import dbModel from "../../models/db-model.js";
 import { getDateArray, getCurrentKcnaId } from "./pics-util.js";
 import { uploadPicsTG, editCaptionTG } from "../tg-api.js";
 
+/**
+ * LOOKS FOR / Gets new picture URLs within a range around the current KCNA ID
+ * @returns {Promise<Array<Object>>} Array of new picture objects with URLs and metadata
+ */
 export const getPicURLs = async () => {
   const newPicArray = [];
 
@@ -74,7 +78,15 @@ export const getPicURLs = async () => {
   return newPicArray;
 };
 
-//ACCEPTS ARRAY OF OBJECTS
+//---------------
+
+/**
+ * Downloads pics from URLs to the file system
+ * @param {Array<Object>} picArray - Array of picture objects to download
+ * @param {string} picArray[].url - URL of the picture
+ * @param {string} picArray[].picPath - Local path to save the picture to
+ * @returns {Promise<boolean>} - returns true if successful / when downloading finished
+ */
 export const downloadPicsFS = async (picArray) => {
   //loop
   for (let i = 0; i < picArray.length; i++) {
@@ -105,8 +117,22 @@ export const downloadPicsFS = async (picArray) => {
       console.log(e.url + "; " + e.message + "; F BREAK: " + e.function);
     }
   }
+
+  return true;
 };
 
+//-----------
+
+/**
+ * Uploads pictures to Telegram from the file system
+ * @param {Object} uploadObj - Object containing upload parameters
+ * @param {Array<Object>} uploadObj.picArray - Array of picture objects to upload
+ * @param {string} uploadObj.picArray[].picPath - Local path of the picture to upload
+ * @param {number} uploadObj.picArray[].kcnaId - ID of the picture
+ * @param {string} uploadObj.picArray[].url - Original URL of the picture
+ * @param {string} uploadObj.postToId - Telegram chat ID to post to
+ * @returns {Promise<boolean>} Returns true when uploading is complete
+ */
 export const uploadPicsFS = async (uploadObj) => {
   const { picArray, postToId } = uploadObj;
 
@@ -150,4 +176,5 @@ export const uploadPicsFS = async (uploadObj) => {
       console.log(e.url + "; " + e.message + "; F BREAK: " + e.function);
     }
   }
+  return true;
 };

@@ -3,6 +3,35 @@ import d from "./define-things.js";
 import { runActionButtonDisplay, runScrapeTypeDisplay, runScrapeToDisplay, displayDataReturn } from "./display.js";
 import { buildInputParams, sendToBack } from "./submit.js";
 
+/**
+ * Handles submit event, passing data to backend, then sends to return parser for display
+ * @function scrapeSubmit
+ * @param {Event} e - The DOM event object
+ * @returns {Promise<void>} - Promise that resolves when submission and display are complete
+ */
+const scrapeSubmit = async (e) => {
+  e.preventDefault();
+
+  //get input params
+  const inputParams = await buildInputParams();
+
+  //get data
+  const data = await sendToBack(inputParams);
+  console.dir(data);
+
+  //display data
+  await displayDataReturn(data);
+};
+
+/**
+ * Handles frontend page display changes based on user inputs (drop downs / buttons / selections)
+ * @function changeDisplay
+ * @param {Event} e - The DOM event object
+ * @param {HTMLElement} e.target - The element that triggered the event
+ * @param {string} e.target.id - The ID of the element that triggered the event
+ * @param {string} e.target.value - The value of the element that triggered the event
+ * @returns {Promise<void>} - Promise that resolves when display change is complete
+ */
 const changeDisplay = async (e) => {
   e.preventDefault();
   const eventElement = e.target;
@@ -24,20 +53,6 @@ const changeDisplay = async (e) => {
       await runScrapeToDisplay(buttonClickedValue);
       break;
   }
-};
-
-const scrapeSubmit = async (e) => {
-  e.preventDefault();
-
-  //get input params
-  const inputParams = await buildInputParams();
-
-  //get data
-  const data = await sendToBack(inputParams);
-  console.dir(data);
-
-  //display data
-  await displayDataReturn(data);
 };
 
 //action button display
