@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Telegram API request handling model
+ * @module models/TgReq
+ */
+
 //import mods
 import fs from "fs";
 import FormData from "form-data";
@@ -5,12 +10,31 @@ import axios from "axios";
 
 import tokenArray from "../config/tg-bot.js";
 
+/**
+ * @class TgReq
+ * @description Handles requests to the Telegram Bot API
+ * @classdesc A class for making different types of requests to the Telegram Bot API,
+ * including GET requests for updates, POST requests for commands, and file uploads for photos.
+ */
 class TgReq {
+  /**
+   * @constructor
+   * @param {Object} dataObject - The data object to be sent in requests
+   * @param {number} [dataObject.offset] - The offset for getUpdates requests
+   * @param {string} [dataObject.chatId] - The chat ID for sending messages or media
+   * @param {string} [dataObject.picPath] - The file path for image uploads
+   */
   constructor(dataObject) {
     this.dataObject = dataObject;
   }
 
-  //SEND TG GET
+  /**
+   * Sends a GET request to the Telegram API to fetch updates
+   * @function tgGet
+   * @param {number} tokenIndex - Index of the bot token to use from the tokenArray
+   * @returns {Promise<Object>} The JSON response from the Telegram API
+   * @throws {Error} Logs the error to console if the request fails
+   */
   async tgGet(tokenIndex) {
     const token = tokenArray[tokenIndex];
     const url = `https://api.telegram.org/bot${token}/getUpdates?offset=${this.dataObject.offset}`;
@@ -25,7 +49,14 @@ class TgReq {
     }
   }
 
-  //SEND TG POST
+  /**
+   * Sends a POST request to the Telegram API with the specified command
+   * @function tgPost
+   * @param {string} command - The Telegram API command to execute (e.g., 'sendMessage')
+   * @param {number} tokenIndex - Index of the bot token to use from the tokenArray
+   * @returns {Promise<Object>} The JSON response from the Telegram API
+   * @throws {Error} Logs the error to console if the request fails
+   */
   async tgPost(command, tokenIndex) {
     const token = tokenArray[tokenIndex];
     const url = `https://api.telegram.org/bot${token}/${command}`;
@@ -45,7 +76,13 @@ class TgReq {
     }
   }
 
-  // SEND UPLOAD PIC
+  /**
+   * Uploads and sends a photo to a Telegram chat using the Telegram API
+   * @function tgPicFS
+   * @param {number} tokenIndex - Index of the bot token to use from the tokenArray
+   * @returns {Promise<Object>} The JSON response from the Telegram API
+   * @throws {Error} Logs detailed error information if the request fails
+   */
   async tgPicFS(tokenIndex) {
     const token = tokenArray[tokenIndex];
     const url = `https://api.telegram.org/bot${token}/sendPhoto`;
