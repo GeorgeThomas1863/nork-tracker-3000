@@ -29,7 +29,7 @@ export const parseCommand = async (req, res) => {
   let data = "";
   switch (inputParams.scrapeType) {
     case "scrapePics":
-      consnole.log("AT SCRAPE PICS");
+      console.log("AT SCRAPE PICS");
       data = await scrapePicsClick(inputParams);
       break;
 
