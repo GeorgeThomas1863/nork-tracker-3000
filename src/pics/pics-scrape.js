@@ -34,13 +34,14 @@ export const scrapePicsClick = async (inputParams) => {
   const dataModel = new dbModel(modelObj, CONFIG.downloadedCollection);
   const picDataArray = await dataModel.getLastItemsArray();
 
+  console.log("AHHHHHHHHH");
+  console.log(picDataArray);
+
   //SHOULD RENAME COMBINE WITH BELOW
   const returnObj = {
     dataArray: picDataArray,
     dataType: scrapeType,
   };
-
-  console.log(returnObj);
 
   const uploadObj = {
     picArray: picDataArray,
