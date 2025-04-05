@@ -9,7 +9,7 @@
 import CONFIG from "../config/scrape-config.js";
 
 import { scrapeArticlesClick, runScrapeArticles } from "./articles/articles-scrape.js";
-import { runPostArticles } from "./articles/articles-post.js";
+import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
 
@@ -171,13 +171,13 @@ export const displayTG = async (data) => {
 
   //otherwise
   switch (scrapeType) {
-    // case "scrapeArticles":
-    //   await runScrapeArticles();
-    //   console.log("FINISHED SCRAPING ARTICLES");
-    //   break;
+    case "scrapeArticles":
+      await postArticlesLoop(dataArray);
+      console.log("FINISHED UPLOADING ARTICLES?!?");
+      break;
 
     case "scrapePics":
-      //build upload obj, might not be needed
+      //build upload obj
       const uploadObj = {
         picArray: dataArray,
         postToId: tgId,

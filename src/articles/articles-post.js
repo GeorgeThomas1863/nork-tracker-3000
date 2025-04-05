@@ -32,9 +32,18 @@ export const runPostArticles = async (postToId = CONFIG.articleSendToId) => {
   // console.log(articleArray);
   if (articleArray.length === 0) return null; //no new articles to post
 
-  //sort the article array //UNSURE IF WORKS
+  //sort the article array
   articleArray.sort((a, b) => a.myId - b.myId);
 
+  //run postArticlesLoop
+  await postArticlesLoop(articleArray);
+
+  console.log("FINISHED POSTING " + articleArray.length + " NEW ARTICLES");
+  return articleArray.length;
+};
+
+//needed addition
+export const postArticlesLoop = async (articleArray) => {
   //loop through ARTICLE array
   for (let i = 0; i < articleArray.length; i++) {
     try {
@@ -56,18 +65,13 @@ export const runPostArticles = async (postToId = CONFIG.articleSendToId) => {
     }
   }
 
-  console.log("FINISHED POSTING " + articleArray.length + " NEW ARTICLES");
+  //just to check when done
   return articleArray.length;
 };
 
 /**
  * Normalizes article data for telegram posting format
  * @function normalizeInputsTG
- * @param {Object} inputObj - The article object to normalize
- * @param {string} inputObj.url - The article URL
- * @param {Date} inputObj.date - The article date
- * @param {string} inputObj.title - The article title
- * @param {string} inputObj.content - The article content
  * @returns {Promise<Object>} Normalized object with telegram-friendly formatting
  */
 export const normalizeInputsTG = async (inputObj) => {
