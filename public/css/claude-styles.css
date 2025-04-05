@@ -292,3 +292,11 @@ PICS STYLES */
   border-left-color: #2c3e50;
   background-color: #f8fafc;
 }
+
+.empty-display {
+  text-align: center; /* Centers the text horizontally */
+  font-size: 4rem; /* Makes font larger (adjust size as needed) */
+  margin: 0 auto; /* Centers the container itself */
+  /* padding: 20px;              */
+  /* line-height: 1.5;           */
+}
