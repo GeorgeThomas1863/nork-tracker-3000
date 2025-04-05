@@ -111,8 +111,6 @@ export const runGetNewData = async (inputParams) => {
     case "scrapeBoth":
       await runScrapeArticles();
       console.log("FINISHED GETTING PICS");
-      await runPostArticles();
-      console.log("FINISHED POSTING PICS");
       await runScrapePics();
       console.log("FINISHED FUCKER");
       break;
