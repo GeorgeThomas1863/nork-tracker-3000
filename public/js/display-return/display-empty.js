@@ -1,7 +1,7 @@
 const buildEmptyDisplay = async (inputData) => {
   const emptyElement = document.createElement("div");
   emptyElement.className = "empty-display";
-  emptyElement.textContent = inputData.text;
+  emptyElement.innerHTML = inputData.text;
 
   return emptyElement;
 };
