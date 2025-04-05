@@ -29,10 +29,12 @@ export const scrapePicsClick = async (inputParams) => {
   const dataModel = new dbModel(modelObj, CONFIG.downloadedCollection);
   const picDataArray = await dataModel.getLastItemsArray();
 
+  console.log("ALLAHU AKBAR");
+  console.log(picDataArray);
+
   //if empty //UNFUCK
   if (!picDataArray || picDataArray.length === 0) {
-    console.log("ALLAHU AKBAR");
-    console.log(picDataArray);
+    console.log("FUCK YOU FAGGOT");
   }
 
   //SHOULD RENAME COMBINE WITH BELOW
