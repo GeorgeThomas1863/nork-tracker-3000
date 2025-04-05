@@ -15,16 +15,14 @@ import { getPicArray } from "./pics-util.js";
 /**
  * API endpoint handler for scraping PICS based on CLICK from UI
  * @function scrapePicsClick
- * @param {Object} inputParams - Parameters from the UI
- * @param {string} inputParams.scrapeType - Type of scrape to perform
- * @param {number} inputParams.howMany - Number of pictures to retrieve
- * @param {string} inputParams.scrapeTo - Destination for scraped data
- * @param {string} inputParams.tgId - Telegram ID for posting
- * @param {string} inputParams.pullNewData - Whether to pull new data ("yesNewData") or use existing
+ * @param {Object} inputParams - User input params from the UI
  * @returns {Promise<Object|Array>} Picture data or status object
  */
 export const scrapePicsClick = async (inputParams) => {
   const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
+
+  console.log("AHHHHHHH");
+  console.log(inputParams);
 
   //if user selects new data
   if (pullNewData === "yesNewData") {
