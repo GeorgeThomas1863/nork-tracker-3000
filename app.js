@@ -2,6 +2,7 @@
 
 //1. ADD JSdocs to controllers
 //1. Figure out TG display !!!!!!!!
+//1. add in password to site / add auth
 
 //1. get pull single url WORKING
 //1. reset up auto scraper, have an on off switch

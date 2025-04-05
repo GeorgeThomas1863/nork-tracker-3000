@@ -19,12 +19,7 @@ import { getPicArray } from "./pics-util.js";
  * @returns {Promise<Object|Array>} Picture data or status object
  */
 export const scrapePicsClick = async (inputParams) => {
-  const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
-
-  // //if user selects new data
-  // if (pullNewData === "yesNewData") {
-  //   await runScrapePics();
-  // }
+  const { scrapeType, howMany, scrapeTo, tgId } = inputParams;
 
   const modelObj = {
     keyToLookup: "kcnaId",
@@ -34,14 +29,16 @@ export const scrapePicsClick = async (inputParams) => {
   const dataModel = new dbModel(modelObj, CONFIG.downloadedCollection);
   const picDataArray = await dataModel.getLastItemsArray();
 
+  //if empty //UNFUCK
+  if (!picDataArray || picDataArray.length === 0) {
+    console.log("ALLAHU AKBAR");
+    console.log(picDataArray);
+  }
+
   //SHOULD RENAME COMBINE WITH BELOW
   const returnObj = {
     dataArray: picDataArray,
     dataType: scrapeType,
-  };
-
-  const uploadObj = {
-    picArray: picDataArray,
     postToId: tgId, //defaults to same as config
   };
 
@@ -52,12 +49,6 @@ export const scrapePicsClick = async (inputParams) => {
   //   // console.log(tgData);
   //   return { data: "DATA POSTED TO TG" };
   // }
-
-  //if empty //UNFUCK
-  if (picDataArray.length === 0) {
-    picDataArray.empty = "YES";
-    return picDataArray;
-  }
 
   //otherwise return obj
   return returnObj;
