@@ -1,7 +1,8 @@
 //TO DO:
 
-//1. ADD JSdocs to controllers
-//1. Figure out TG display !!!!!!!!
+//1. build combo Display for TG (pics and articles)
+//1. Get AUTO scraper re-working
+//1. MASSIVE REFACTOR NEEDED
 //1. add in password to site / add auth
 
 //1. get pull single url WORKING
