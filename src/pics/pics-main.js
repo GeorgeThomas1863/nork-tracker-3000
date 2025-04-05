@@ -156,7 +156,9 @@ export const uploadPicsFS = async (uploadObj) => {
 
       //add check if pic is already uploaded
       const storePicModel = new dbModel(pic, CONFIG.uploadedCollection);
-      await storePicModel.urlNewCheck(); //throws error if pic already uploaded
+
+      //REMOVING FOR SITE, MIGHT NEED TO RE-ADD (or put elsewhere)
+      // await storePicModel.urlNewCheck(); //throws error if pic already uploaded
 
       //otherwise build params and download
       const params = {
