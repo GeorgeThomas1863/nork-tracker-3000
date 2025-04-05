@@ -172,18 +172,23 @@ export const displayTG = async (data) => {
   //otherwise
   switch (scrapeType) {
     case "scrapeArticles":
-      await postArticlesLoop(dataArray);
+      const articleObj = {
+        articleArray: dataArray,
+        postToId: tgId,
+      };
+
+      await postArticlesLoop(articleObj);
       console.log("FINISHED UPLOADING ARTICLES?!?");
       break;
 
     case "scrapePics":
       //build upload obj
-      const uploadObj = {
+      const picObj = {
         picArray: dataArray,
         postToId: tgId,
       };
       // console.log(uploadObj);
-      await uploadPicsFS(uploadObj);
+      await uploadPicsFS(picObj);
       break;
   }
 };

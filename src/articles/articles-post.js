@@ -36,14 +36,20 @@ export const runPostArticles = async (postToId = CONFIG.articleSendToId) => {
   articleArray.sort((a, b) => a.myId - b.myId);
 
   //run postArticlesLoop
-  await postArticlesLoop(articleArray);
+  const uploadObj = {
+    articleArray: articleArray,
+    postToId: postToId,
+  };
+
+  await postArticlesLoop(uploadObj);
 
   console.log("FINISHED POSTING " + articleArray.length + " NEW ARTICLES");
   return articleArray.length;
 };
 
 //needed addition
-export const postArticlesLoop = async (articleArray) => {
+export const postArticlesLoop = async (articleObj) => {
+  const { articleArray, postToId } = articleObj;
   //loop through ARTICLE array
   for (let i = 0; i < articleArray.length; i++) {
     try {
