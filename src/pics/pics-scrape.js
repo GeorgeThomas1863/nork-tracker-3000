@@ -19,30 +19,18 @@ import { getPicArray } from "./pics-util.js";
  * @returns {Promise<Object|Array>} Picture data or status object
  */
 export const scrapePicsClick = async (inputParams) => {
-  const { scrapeType, howMany, scrapeTo, tgId } = inputParams;
+  const returnObj = { ...inputParams };
 
   const modelObj = {
     keyToLookup: "kcnaId",
-    howMany: howMany,
+    howMany: inputParams.howMany,
   };
 
   const dataModel = new dbModel(modelObj, CONFIG.downloadedCollection);
   const picDataArray = await dataModel.getLastItemsArray();
 
   //SHOULD RENAME COMBINE WITH BELOW
-  const returnObj = {
-    dataArray: picDataArray,
-    dataType: scrapeType,
-    postToId: tgId, //defaults to same as config
-  };
-
-  //add check for sending to tg
-  // if (scrapeTo === "displayTG") {
-  //   //send anything new to tg
-  //   const tgData = await uploadPicsFS(uploadObj);
-  //   // console.log(tgData);
-  //   return { data: "DATA POSTED TO TG" };
-  // }
+  returnObj.dataArray = picDataArray;
 
   //otherwise return obj
   return returnObj;

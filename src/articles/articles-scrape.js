@@ -21,37 +21,18 @@ import { getArticleArray } from "./articles-util.js";
  * @returns {Promise<Object|Array>} Article data or status object
  */
 export const scrapeArticlesClick = async (inputParams) => {
-  const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
-
-  // //if set to new run scrape articles
-  // if (pullNewData === "yesNewData") {
-  //   await runScrapeArticles();
-  // }
+  const returnObj = { ...inputParams };
 
   //get article data from mongo
   const modelObj = {
     keyToLookup: "myId",
-    howMany: howMany,
+    howMany: inputParams.howMany,
   };
 
   const dataModel = new dbModel(modelObj, CONFIG.articleContentCollection);
   const articleDataArray = await dataModel.getLastItemsArray();
 
-  console.log("ARTICLE DATA ARRAY!!!!!!!");
-  console.log(articleDataArray);
-  console.log(articleDataArray.length);
-
-  // //if empty //UNFUCK
-  // if (articleDataArray.length === 0) {
-  //   articleDataArray.empty = "YES";
-  //   // console.log(articleDataArray);
-  //   return articleDataArray;
-  // }
-
-  const returnObj = {
-    dataArray: articleDataArray,
-    dataType: scrapeType,
-  };
+  returnObj.dataArray = articleDataArray;
 
   //otherwise return obj and process on frontend
   return returnObj;

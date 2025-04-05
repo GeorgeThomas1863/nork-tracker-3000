@@ -48,7 +48,7 @@ export const parseCommand = async (req, res) => {
   }
 
   //check if tg return
-  data = await checkIfTG(inputParams, data);
+  data = await displayTG(data);
 
   //check if empty return
   data = await checkIfEmpty(data);
@@ -159,24 +159,25 @@ export const runScrapeURL = async () => {
 
 //---------------
 
-//PROB PUT ELSEWHERE
-export const checkIfTG = async (inputParams, data) => {
-  const { scrapeTo, tgId } = inputParams;
+//PUT ELSEWHEREs
+export const displayTG = async (data) => {
+  const { scrapeTo, scrapeType } = data;
 
   //return data if not scraping to TG
   if (scrapeTo !== "displayTG") return data;
 
-  //otherwise run TG
-  data.tgId = tgId;
-  // data.scrapeType = scrapeType
-  const returnObj = await tgDisplay(data);
-  return returnObj;
-};
+  //otherwise
+  switch (scrapeType) {
+    // case "scrapeArticles":
+    //   await runScrapeArticles();
+    //   console.log("FINISHED SCRAPING ARTICLES");
+    //   break;
 
-//PUT ELSEWHERE
-export const tgDisplay = async (data) => {
-  console.log("HOLY FUCK BALLS BATMAN");
-  console.log(data);
+    case "scrapePics":
+      await runScrapePics();
+      console.log("FINISHED SCRAPING PICS");
+      break;
+  }
 };
 
 //prob put somewhere else
@@ -196,7 +197,7 @@ export const checkIfEmpty = async (inputData) => {
   //otherwise return empty obj
   const emptyObj = {
     dataArray: { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE KCNA <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" },
-    dataType: "empty",
+    scrapeType: "empty",
   };
 
   return emptyObj;

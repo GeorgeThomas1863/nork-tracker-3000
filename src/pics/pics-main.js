@@ -136,12 +136,7 @@ export const downloadPicsFS = async (picArray) => {
 /**
  * Uploads pictures to Telegram from the file system
  * @function uploadPicsFS
- * @param {Object} uploadObj - Object containing upload parameters
- * @param {Array<Object>} uploadObj.picArray - Array of picture objects to upload
- * @param {string} uploadObj.picArray[].picPath - Local path of the picture to upload
- * @param {number} uploadObj.picArray[].kcnaId - ID of the picture
- * @param {string} uploadObj.picArray[].url - Original URL of the picture
- * @param {string} uploadObj.postToId - Telegram chat ID to post to
+ * @param {Object} uploadObj - Object containing upload parameterss
  * @returns {Promise<boolean>} Returns true when uploading is complete
  */
 export const uploadPicsFS = async (uploadObj) => {
