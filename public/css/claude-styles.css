@@ -294,13 +294,11 @@ PICS STYLES */
 }
 
 .empty-container {
+  margin-top: 3rem;
   display: flex;
   justify-content: center;
   width: 100%;
-  /* padding: 2rem 0;  */
-  list-style-type: none;
-  /* margin: 0; */
-  margin-top: 10rem;
+  /* list-style-type: none; */
 }
 
 .empty-text {
