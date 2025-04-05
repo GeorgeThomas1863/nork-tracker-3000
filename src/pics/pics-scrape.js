@@ -21,9 +21,6 @@ import { getPicArray } from "./pics-util.js";
 export const scrapePicsClick = async (inputParams) => {
   const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
 
-  console.log("AHHHHHHH");
-  console.log(inputParams);
-
   //if user selects new data
   if (pullNewData === "yesNewData") {
     await runScrapePics();
@@ -42,6 +39,8 @@ export const scrapePicsClick = async (inputParams) => {
     dataArray: picDataArray,
     dataType: scrapeType,
   };
+
+  console.log(returnObj);
 
   const uploadObj = {
     picArray: picDataArray,
