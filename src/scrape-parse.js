@@ -11,6 +11,7 @@ import CONFIG from "../config/scrape-config.js";
 import { scrapeArticlesClick, runScrapeArticles } from "./articles/articles-scrape.js";
 import { runPostArticles } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
+import { uploadPicsFS } from "./pics/pics-main.js";
 
 /**
  * Parses and processes commands from frontend request
@@ -181,7 +182,7 @@ export const displayTG = async (data) => {
         picArray: dataArray,
         postToId: tgId,
       };
-      console.log(uploadObj);
+      // console.log(uploadObj);
       await uploadPicsFS(uploadObj);
       break;
   }
