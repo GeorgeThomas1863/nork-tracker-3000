@@ -1,9 +1,14 @@
 const buildEmptyDisplay = async (inputData) => {
-  const emptyElement = document.createElement("div");
-  emptyElement.className = "empty-display";
-  emptyElement.innerHTML = inputData.text;
+  const emptyContainer = document.createElement("ul");
+  const emptyElement = document.createElement("li");
 
-  return emptyElement;
+  emptyContainer.className = "empty-container";
+  emptyElement.className = "empty-text";
+
+  emptyElement.innerHTML = inputData.text;
+  emptyContainer.append(emptyElement);
+
+  return emptyContainer;
 };
 
 export default buildEmptyDisplay;
