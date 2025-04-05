@@ -23,7 +23,7 @@ export const parseCommand = async (req, res) => {
   const inputParams = await setInputParamsDefaults(req.body);
 
   //GET NEW DATA FIRST / HERE (returns null if off)
-  await runGetNewData();
+  await runGetNewData(inputParams);
 
   //run command based on input
   let data = "";
