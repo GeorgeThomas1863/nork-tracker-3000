@@ -29,7 +29,7 @@ export const scrapePicsClick = async (inputParams) => {
   const dataModel = new dbModel(modelObj, CONFIG.downloadedCollection);
   const picDataArray = await dataModel.getLastItemsArray();
 
-  console.log("ALLAHU AKBAR");
+  console.log("ALLAHU AKBAR!!!!!!!");
   console.log(picDataArray);
 
   //if empty //UNFUCK

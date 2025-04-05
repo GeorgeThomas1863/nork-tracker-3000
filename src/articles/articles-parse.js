@@ -154,8 +154,6 @@ export const sortArticleObjArray = async (inputArray) => {
 
     // Add the numeric identifier
     newObj.myId = i + myIdCurrent;
-    console.log("AHHHHHHHHHHHH");
-    console.log(i + myIdCurrent);
 
     // Add to the output array
     arrayNormal.push(newObj);

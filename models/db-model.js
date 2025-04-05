@@ -130,8 +130,6 @@ class dbModel {
    * @throws {Error} Propagates any MongoDB errors
    */
   async getLastItemsArray() {
-    console.log("AHHHHHH");
-    console.log(this.dataObject);
     const keyToLookup = this.dataObject.keyToLookup;
     const howMany = +this.dataObject.howMany;
     // console.log(howMany);

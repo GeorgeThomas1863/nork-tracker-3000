@@ -54,7 +54,7 @@ export const getMyId = async (inputId) => {
 
   //return current stored id (add 1 later)
   if (myIdStored > inputId) {
-    return myIdStored;
+    return myIdStored + 1;
   }
 
   //if equal just return input
