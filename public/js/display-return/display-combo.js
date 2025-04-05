@@ -7,8 +7,8 @@
  */
 
 import buildCollapseDisplay from "./collapse-item.js";
-import { buildArticlePicList } from "./pic-display.js";
-import { getArticleElement } from "./article-display.js";
+import { buildArticlePicList } from "./display-pic.js";
+import { getArticleElement } from "./display-article.js";
 
 /**
  * Creates an ul element by building array of li elements with combined article AND picture elements

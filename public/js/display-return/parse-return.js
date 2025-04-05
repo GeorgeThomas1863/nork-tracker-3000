@@ -8,9 +8,10 @@
 
 import d from "../define-things.js";
 
-import { buildPicList } from "./pic-display.js";
-import { buildArticleList } from "./article-display.js";
-import { buildComboList } from "./combo-display.js";
+import { buildPicList } from "./display-pic.js";
+import { buildArticleList } from "./display-article.js";
+import { buildComboList } from "./display-combo.js";
+import buildEmptyDisplay from "./display-empty.js";
 
 /**
  * Parses returned data from backend and builds appropriate DOM elements by running
@@ -32,8 +33,8 @@ export const parseDataReturn = async (inputData) => {
   switch (dataType) {
     //empty return
     case "empty":
-      container.appendChild(dataArray.text);
-      // const emptyData = await displayEmptyData(dataArray);
+      const emptyData = await buildEmptyDisplay(dataArray);
+      container.appendChild(emptyData);
       break;
 
     //for pics
