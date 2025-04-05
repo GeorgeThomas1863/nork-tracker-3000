@@ -22,6 +22,8 @@ const scrapeSubmit = async (e) => {
 
   //get input params
   const inputParams = await buildInputParams();
+  console.log("NEVER ENDING");
+  console.log(inputParams);
 
   //get data
   const data = await sendToBack(inputParams);
