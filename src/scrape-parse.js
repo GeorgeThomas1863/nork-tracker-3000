@@ -49,7 +49,7 @@ export const parseCommand = async (req, res) => {
 
   //check if empty return
   if (data.dataArray && data.dataArray.length === 0) {
-    data.dataArray = { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE SITE <br> (Switch re-scrape selection above to YES and run again)" };
+    data.dataArray = { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE SITE <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" };
     data.dataType = "empty";
   }
 
