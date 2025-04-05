@@ -297,14 +297,14 @@ PICS STYLES */
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 2rem 0; /* Increased vertical padding for more space */
+  /* padding: 2rem 0;  */
   list-style-type: none;
   margin: 0;
 }
 
 .empty-text {
   background-color: white;
-  padding: 2rem; /* Increased padding for more space */
+  padding: 2rem 5rem; /* Increased padding for more space */
   border-radius: 8px;
   font-size: 3rem; /* Slightly reduced for professionalism */
   font-weight: 600; /* Semi-bold is more professional than full bold */
