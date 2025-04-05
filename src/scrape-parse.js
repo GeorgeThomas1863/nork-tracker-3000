@@ -10,8 +10,9 @@ import CONFIG from "../config/scrape-config.js";
 
 import { scrapeArticlesClick, runScrapeArticles } from "./articles/articles-scrape.js";
 import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
-import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
+import { scrapePicsClick, runScrapePics, runGetNewPics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
+import { postComboLoop } from "./combo-post.js";
 
 /**
  * Parses and processes commands from frontend request
@@ -48,12 +49,15 @@ export const parseCommand = async (req, res) => {
       break;
   }
 
-  //check if tg return
-  data = await displayTG(data);
-
   //check if empty return
-  data = await checkIfEmpty(data);
+  const emptyData = await checkIfEmpty(data);
+  if (emptyData) return res.json(emptyData);
 
+  //check if tg return
+  const tgData = await displayTG(data);
+  if (tgData) return res.json(tgData);
+
+  //otherwise return data for display
   return res.json(data);
 };
 
@@ -111,14 +115,14 @@ export const runGetNewData = async (inputParams) => {
       break;
 
     case "scrapePics":
-      await runScrapePics();
+      await runGetNewPics();
       console.log("FINISHED SCRAPING PICS");
       break;
 
     case "scrapeBoth":
       await runScrapeArticles();
       console.log("FINISHED GETTING PICS");
-      await runScrapePics();
+      await runGetNewPics();
       console.log("FINISHED FUCKER");
       break;
   }
@@ -160,14 +164,34 @@ export const runScrapeURL = async () => {
 
 //---------------
 
+//prob put somewhere else
+/**
+ * Checks if the input data array is empty and provides appropriate response
+ * @function checkIfEmpty
+ * @param {Object} inputData - The data object to check (containing data from backend)
+ * @returns {Object|null} null if not empty; custom emptyObj if empty
+ */
+export const checkIfEmpty = async (inputData) => {
+  //return null if data exists
+  if (inputData && inputData.dataArray && inputData.dataArray.length > 0) return null;
+
+  //otherwise return custom empty obj
+  const emptyObj = {
+    dataArray: { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE KCNA <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" },
+    scrapeType: "empty",
+  };
+
+  return emptyObj;
+};
+
 //PUT ELSEWHEREs
 export const displayTG = async (data) => {
   const { scrapeTo, scrapeType, dataArray, tgId } = data;
   console.log("UPLOADING TO TG");
   console.log(data);
 
-  //return data if not scraping to TG
-  if (scrapeTo !== "displayTG") return data;
+  //return null if not posting to tg
+  if (scrapeTo !== "displayTG") return null;
 
   //otherwise
   switch (scrapeType) {
@@ -190,28 +214,9 @@ export const displayTG = async (data) => {
       // console.log(uploadObj);
       await uploadPicsFS(picObj);
       break;
+
+    case "scrapeBoth":
+      await postComboLoop(data);
+      break;
   }
-};
-
-//prob put somewhere else
-/**
- * Checks if the input data array is empty and provides appropriate response
- * @function checkIfEmpty
- * @param {Object} inputData - The data object to check (containing data from backend)
- * @returns {Object|null} Original data if not empty, formatted message if empty, or null if invalid
- */
-export const checkIfEmpty = async (inputData) => {
-  //return input if error (add error return here?)!!!
-  if (!inputData || !inputData.dataArray) return null;
-
-  //return if data exists
-  if (inputData.dataArray.length > 0) return inputData;
-
-  //otherwise return empty obj
-  const emptyObj = {
-    dataArray: { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE KCNA <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" },
-    scrapeType: "empty",
-  };
-
-  return emptyObj;
 };

@@ -36,6 +36,25 @@ export const scrapePicsClick = async (inputParams) => {
   return returnObj;
 };
 
+export const runGetNewPics = async () => {
+  console.log("ON DOWNLOADING NEW PICS");
+
+  const newPicUrls = await getPicURLs();
+  console.log("LIST OF NEW PICS");
+  console.log(newPicUrls);
+
+  //GET PIC ARRAY for downloading here (specifying type in arg)
+  const downloadPicArray = await getPicArray("picsToDownload");
+  console.log("!!!!!PIC ARRAY!!!!!");
+  console.log(downloadPicArray);
+
+  //run download pics
+  await downloadPicsFS(downloadPicArray);
+  console.log("DONE GETTING NEW PICS");
+  return newPicUrls;
+};
+
+//PROB REPLACE BELOW
 /**
  * Runs full PIC scrape process - finds new pictures, downloads them, and uploads them to Telegram
  * DOES ALL 3: looks for, downloads, AND uploading new pics; if ANY new in ANY of 3 will handle

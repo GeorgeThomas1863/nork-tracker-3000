@@ -87,14 +87,11 @@ export const getPicURLs = async () => {
   return newPicArray;
 };
 
-//---------------
 
 /**
  * Downloads pics from URLs to the file system
  * @function downloadPicsFS
  * @param {Array<Object>} picArray - Array of picture objects to download
- * @param {string} picArray[].url - URL of the picture
- * @param {string} picArray[].picPath - Local path to save the picture to
  * @returns {Promise<boolean>} - returns true if successful / when downloading finished
  */
 export const downloadPicsFS = async (picArray) => {
@@ -131,7 +128,7 @@ export const downloadPicsFS = async (picArray) => {
   return true;
 };
 
-//-----------
+
 
 /**
  * Uploads pictures to Telegram from the file system

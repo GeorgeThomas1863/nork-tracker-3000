@@ -47,7 +47,12 @@ export const runPostArticles = async (postToId = CONFIG.articleSendToId) => {
   return articleArray.length;
 };
 
-//needed addition
+/**
+ * Processes and posts an array of articles to TG
+ * @function postArticlesLoop
+ * @param {Object} articleObj - Object containing articles and destination
+ * @returns {Promise<number>} The number of articles processed
+ */
 export const postArticlesLoop = async (articleObj) => {
   const { articleArray, postToId } = articleObj;
   //loop through ARTICLE array
@@ -101,11 +106,6 @@ export const normalizeInputsTG = async (inputObj) => {
  * Handles sending messages to Telegram, splitting content into chunks if too long
  * @function handleSendMessage
  * @param {Object} inputObj - Object containing message data
- * @param {string} inputObj.url - The article URL
- * @param {string} inputObj.date - The formatted article date
- * @param {string} inputObj.title - The article title with HTML formatting
- * @param {string} inputObj.content - The article content
- * @param {string} inputObj.postToId - The Telegram channel ID to post to
  * @returns {Promise<number>} The length of the content sent
  */
 //chunk content logic if too long
