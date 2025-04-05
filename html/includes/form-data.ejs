@@ -15,14 +15,14 @@
   </li>
   <li id="howMany-list-item">
     <label for="howMany">How Many?</label>
-    <input type="text" name="howMany" id="howMany" placeholder="[Starts with most recent]" />
+    <input type="text" name="howMany" id="howMany" placeholder="[Defaults to 1, starting with most recent]" />
   </li>
   <li id="newData-list-item">
-    <label for="pullNewData">Scrape New?</label>
+    <label for="pullNewData">Re-Scrape KCNA?</label>
     <select name="pullNewData" id="pullNewData">
-      <option value="" disabled selected>[Will take few min if yes]</option>
-      <option value="noNewData" id="noNewData">No</option>
-      <option value="yesNewData" id="yesNewData">Yes</option>
+      <!-- <option value="" disabled selected>[Defaults to No, will take few min if yes]</option> -->
+      <option value="noNewData" id="noNewData" selected>No</option>
+      <option value="yesNewData" id="yesNewData">Yes [will take a few min]</option>
     </select>
   </li>
   <li id="scrapeTo-list-item">
