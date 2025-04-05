@@ -161,7 +161,9 @@ export const runScrapeURL = async () => {
 
 //PUT ELSEWHEREs
 export const displayTG = async (data) => {
-  const { scrapeTo, scrapeType } = data;
+  const { scrapeTo, scrapeType, dataArray, tgId } = data;
+  console.log("UPLOADING TO TG");
+  console.log(data);
 
   //return data if not scraping to TG
   if (scrapeTo !== "displayTG") return data;
@@ -174,7 +176,13 @@ export const displayTG = async (data) => {
     //   break;
 
     case "scrapePics":
-      console.log("ALLAHU AKBAR");
+      //build upload obj, might not be needed
+      const uploadObj = {
+        picArray: dataArray,
+        postToId: tgId,
+      };
+      console.log(uploadObj);
+      await uploadPicsFS(uploadObj);
       break;
   }
 };
