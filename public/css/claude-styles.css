@@ -315,10 +315,6 @@ PICS STYLES */
 }
 
 .empty-text h2 {
+  margin-top: 5rem;
   font-size: 2rem; /* Adds space between the two lines */
-}
-
-/* Style for line break in the message */
-.empty-text br {
-  margin-bottom: 2rem; /* Adds space between the two lines */
 }
