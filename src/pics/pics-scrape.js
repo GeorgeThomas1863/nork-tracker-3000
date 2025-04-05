@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Picture scraping controller for UI interactions and automated processes
+ * @module services/pics/pics-scrape
+ *
+ * Handles UI-triggered picture scraping operations and automated scraping processes,
+ * coordinating the finding, downloading, and uploading of pictures to Telegram.
+ */
+
 import dbModel from "../../models/db-model.js";
 import CONFIG from "../../config/scrape-config.js";
 
@@ -6,6 +14,7 @@ import { getPicArray } from "./pics-util.js";
 
 /**
  * API endpoint handler for scraping PICS based on CLICK from UI
+ * @function scrapePicsClick
  * @param {Object} inputParams - Parameters from the UI
  * @param {string} inputParams.scrapeType - Type of scrape to perform
  * @param {number} inputParams.howMany - Number of pictures to retrieve
@@ -59,15 +68,12 @@ export const scrapePicsClick = async (inputParams) => {
   return returnObj;
 };
 
-//---------------
-
 /**
  * Runs full PIC scrape process - finds new pictures, downloads them, and uploads them to Telegram
+ * DOES ALL 3: looks for, downloads, AND uploading new pics; if ANY new in ANY of 3 will handle
+ * @function runScrapePics
  * @returns {Promise<Array<Object>>} Array of new picture objects that were found
  */
-
-//DOES ALL 3: looks for, downloads, AND uploading new pics
-//if ANY new in ANY of 3 will handle
 export const runScrapePics = async () => {
   console.log("ON DOWNLOADING NEW PICS");
 

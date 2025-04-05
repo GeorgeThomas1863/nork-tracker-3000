@@ -1,5 +1,13 @@
 /**
- * Creates / builds a collapsible UI component with toggle functionality for any input element (mostly li's)
+ * @fileoverview Collapsible UI component for building collapsible / expandable content sections
+ * @module frontend/display-return/collapse-item
+ *
+ * Provides a reusable component for creating collapsible UI elements with
+ * toggle functionality, accessibility attributes, and visual indicators.
+ */
+
+/**
+ * Creates / builds the collapsible UI component with toggle functionality for any input element (mostly li's)
  * @function buildCollapseDisplay
  * @param {string} titleInput - Title for the collapsible section
  * @param {HTMLElement} contentInput - DOM element to be placed inside the collapsible section

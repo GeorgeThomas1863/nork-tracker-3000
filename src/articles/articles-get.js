@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Article fetching and processing service for KCNA content
+ * @module services/articles/articles-main
+ *
+ * Provides functions for retrieving article listings, fetching individual article content,
+ * extracting article data, and identifying embedded images within articles.
+ */
+
 import { JSDOM } from "jsdom";
 
 import CONFIG from "../../config/scrape-config.js";
@@ -8,6 +16,7 @@ import { parseArticleHtml } from "./articles-parse.js";
 
 /**
  * GETS HTML of the main page that contains a list of articles
+ * @function getArticleListHtml
  * @returns {Promise<string>} HTML content of page with list of articles
  */
 export const getArticleListHtml = async () => {
@@ -25,6 +34,7 @@ export const getArticleListHtml = async () => {
 
 /**
  * GETS HTML content from a specific article URL
+ * @function getArticleHtml
  * @param {string} url - The URL of the article to fetch
  * @returns {Promise<string>} The HTML content of the article
  */
@@ -46,6 +56,7 @@ export const getArticleHtml = async (url) => {
 
 /**
  * Extracts all data from each article into an object, outputs as array of objects
+ * @function getArticleObjArray
  * @param {Array<Object>} inputArray - Array of objects containing article URLs (objects are basically just the url)
  * @returns {Promise<Array<Object>>} Array of article objects with content and images
  */
@@ -90,6 +101,7 @@ export const getArticleObjArray = async (inputArray) => {
 
 /**
  * Extracts image URLs (in an object) from kcna pic display page, returns array
+ * @function getArticlePicArray
  * @param {string} picURL - URL of the page containing article images
  * @returns {Promise<Array<Object>>} Array of picture objects with URLs and metadata
  */

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Command parsing and execution service for scraping operations
+ * @module controllers/parser
+ *
+ * Handles frontend command requests, parses parameters, and executes the appropriate
+ * scraping operations for articles, pictures, or both with configurable options.
+ */
+
 import CONFIG from "../config/scrape-config.js";
 
 import { scrapeArticlesClick, runScrapeArticles } from "./articles/articles-scrape.js";
@@ -6,6 +14,7 @@ import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
 
 /**
  * Parses and processes commands from the frontend request
+ * @function parseCommand
  * @param {Object} req - Express request object
  * @param {Object} req.body - Request body containing command parameters
  * @param {Object} res - Express response object
@@ -44,6 +53,7 @@ export const parseCommand = async (req, res) => {
 
 /**
  * Sets default values for any missing input parameters
+ * @function setInputParamsDefaults
  * @param {Object} inputParams - Raw input parameters from request
  * @param {string} [inputParams.scrapeType] - Type of scrape operation
  * @param {string} [inputParams.scrapeTo] - Destination for scraped data
@@ -80,6 +90,7 @@ const setInputParamsDefaults = async (inputParams) => {
 
 /**
  * Restarts the automatic scraper process for pics AND articles
+ * @function runRestartAutoScraper
  * @param {Object} inputParams - Input parameters (currently unused) //WILL FIX
  * @returns {Promise<boolean>} True when process completes
  */
@@ -99,6 +110,7 @@ export const runRestartAutoScraper = async (inputParams) => {
 
 /**
  * Runs a one-time data scraping operation of either pics OR articles OR both
+ * @function runGetNewData
  * @param {Object} inputParams - Input parameters
  * @param {string} inputParams.pullNewData - Whether to pull new data ("yesNewData" or "noNewData")
  * @param {string} inputParams.scrapeType - Type of scrape to perform
@@ -135,6 +147,7 @@ export const runGetNewData = async (inputParams) => {
 //TODO below function
 /**
  * Scrapes content from a specific URL (placeholder function)
+ * @function runScrapeURL
  * @param {Object} inputParams - Input parameters
  * @returns {Promise<void>}
  */

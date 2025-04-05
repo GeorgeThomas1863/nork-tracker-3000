@@ -1,9 +1,18 @@
+/**
+ * @fileoverview Article posting service for Telegram delivery
+ * @module services/articles/articles-post
+ *
+ * Provides functions for posting articles to Telegram channels, handling content formatting,
+ * message chunking for long articles, and tracking posted content.
+ */
+
 import dbModel from "../../models/db-model.js";
 import CONFIG from "../../config/scrape-config.js";
 import { sendMessageChunkTG } from "../tg-api.js";
 
 /**
  * default post handler
+ * @function runPostArticles
  * @param {string} postToId - The ID of the channel to post to (defaults to CONFIG.articleSendToId)
  * @returns {Promise<number|null>} The number of articles posted, or null if no articles were posted
  */
@@ -53,6 +62,7 @@ export const runPostArticles = async (postToId = CONFIG.articleSendToId) => {
 
 /**
  * Normalizes article data for telegram posting format
+ * @function normalizeInputsTG
  * @param {Object} inputObj - The article object to normalize
  * @param {string} inputObj.url - The article URL
  * @param {Date} inputObj.date - The article date
@@ -79,6 +89,7 @@ export const normalizeInputsTG = async (inputObj) => {
 
 /**
  * Handles sending messages to Telegram, splitting content into chunks if too long
+ * @function handleSendMessage
  * @param {Object} inputObj - Object containing message data
  * @param {string} inputObj.url - The article URL
  * @param {string} inputObj.date - The formatted article date

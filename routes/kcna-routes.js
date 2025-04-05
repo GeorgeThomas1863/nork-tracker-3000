@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Express router configuration for the KCNA scraping application
+ * @module routes/kcna-routes
+ *
+ * Defines application routes for processing scraping commands,
+ * rendering views, and handling error conditions.
+ */
+
 import express from "express";
 
 import { indexDisplay, display404, display500 } from "../controllers/display.js";

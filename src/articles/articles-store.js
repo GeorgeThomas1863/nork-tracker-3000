@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Article database storage service
+ * @module services/articles/articles-store
+ *
+ * Provides functions for storing article listings, article content objects,
+ * and logging article lookup attempts in the database.
+ */
+
 import CONFIG from "../../config/scrape-config.js";
 import dbModel from "../../models/db-model.js";
 
@@ -7,6 +15,7 @@ import dbModel from "../../models/db-model.js";
 
 /**
  * Stores a list of article URLs in the database
+ * @function storeArticleList
  * @param {Array<Object>} inputArray - Array of objects containing article URLs
  * @returns {Promise<boolean>} True if storage was successful
  */
@@ -23,6 +32,7 @@ export const storeArticleList = async (inputArray) => {
 
 /**
  * Stores detailed article objects from single article
+ * @function storeArticleObj
  * @param {Array<Object>} inputArray - Array of article objects with content
  * @returns {Promise<boolean>} True if storage was successful
  */
@@ -45,6 +55,7 @@ export const storeArticleObj = async (inputArray) => {
 //!!! MAYBE MOVE TO UTIL
 /**
  * Logs article lookup attempts for debugging/tracking
+ * @function logArticleLookup
  * @param {string} articleListHtml - HTML content of the article list page
  * @returns {Promise<void>}
  */

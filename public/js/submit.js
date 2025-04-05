@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Frontend API for building scrape req data and sending scrape req to backend
+ * @module frontend/api-service
+ *
+ * Handles building request parameters from user inputs and
+ * sending requests to the backend API endpoints.
+ */
+
 //import modules
 import d from "./define-things.js";
 

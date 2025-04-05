@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Frontend data parsing service for backend responses
+ * @module frontend/display-return/parse-return
+ *
+ * Analyzes data returned from the backend and routes it to the appropriate
+ * display components based on content type (articles, pictures, or both).
+ */
+
 import d from "../define-things.js";
 
 import { buildPicList } from "./pic-display.js";

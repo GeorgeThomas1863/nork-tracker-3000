@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Frontend display management utilities
+ * @module frontend/display
+ *
+ * Provides functions for showing/hiding UI elements, handling display updates
+ * based on user selections, and rendering data returned from the backend.
+ */
+
 import d from "./define-things.js";
 import { parseDataReturn } from "./display-return/parse-return.js";
 

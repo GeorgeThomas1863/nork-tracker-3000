@@ -1,5 +1,12 @@
-import buildCollapseDisplay from "./collapse-item.js";
+/**
+ * @fileoverview Combined article and picture display component (for displaying BOTH articles AND pics)
+ * @module frontend/display-return/combo-display
+ *
+ * Provides functions for creating DOM elements that display both article content
+ * and associated pictures in a collapsible, structured format.
+ */
 
+import buildCollapseDisplay from "./collapse-item.js";
 import { buildArticlePicList } from "./pic-display.js";
 import { getArticleElement } from "./article-display.js";
 

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview DOM element reference OBJECT for frontend elements
+ * @module frontend/define-things
+ *
+ * Centralizes all DOM element selections for the application UI,
+ * providing a single object for referencing interface elements.
+ */
+
 //Defines all frontend dom elements, puts elements into obj for easier seleciton
 const d = {
   //action buttons

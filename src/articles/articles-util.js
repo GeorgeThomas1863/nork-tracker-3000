@@ -1,8 +1,17 @@
+/**
+ * @fileoverview Utility functions for article operations
+ * @module services/articles/articles-util
+ *
+ * Provides helper functions for comparing article collections
+ * and managing article ID sequences.
+ */
+
 import CONFIG from "../../config/scrape-config.js";
 import dbModel from "../../models/db-model.js";
 
 /**
  * Retrieves arrays of articles based on the specified type
+ * @function getArticleArray
  * @param {string} type - Type of articles to get ("articlesToDownload" or "articlesToUpload")
  * @returns {Promise<Array>} Array of article objects
  */
@@ -32,6 +41,7 @@ export const getArticleArray = async (type) => {
 
 /**
  * Gets the current maximum myId value or uses the provided input (for when collection is blank)
+ * @function getMyId
  * @param {number} inputId - Default ID to use if no higher ID is found
  * @returns {Promise<number>} The highest myId value
  */

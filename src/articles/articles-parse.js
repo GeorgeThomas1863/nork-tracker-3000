@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Article HTML parsing and data extraction service
+ * @module services/articles/articles-parse
+ *
+ * Provides functions for parsing HTML content from KCNA pages, extracting article listings,
+ * parsing individual article content, and organizing articles with sequential IDs.
+ */
+
 import { JSDOM } from "jsdom";
 
 import CONFIG from "../../config/scrape-config.js";
@@ -7,6 +15,7 @@ import { getMyId } from "./articles-util.js";
 
 /**
  * Parses the main page HTML to extract a list of article URLs
+ * @function parseArticleList
  * @param {string} inputData - HTML content of the main page
  * @returns {Promise<Array<Object>>} Array of objects containing article URLs
  */
@@ -54,6 +63,7 @@ export const parseArticleList = async (inputData) => {
 
 /**
  * Parses the HTML content of a SINGLE article to extract its data
+ * @function parseArticleHtml
  * @param {string} inputHtml - HTML content of the article page
  * @returns {Promise<Object>} Article object with title, date, content and picture URL
  * @throws {Error} Throws an error if date parsing fails
@@ -116,6 +126,7 @@ export const parseArticleHtml = async (inputHtml) => {
 
 /**
  * Sorts an array of article objects by date AND assigns sequential IDs
+ * @function sortArticleObjArray
  * @param {Array<Object>} inputArray - Array of article objects to sort
  * @returns {Promise<Array<Object>|null>} Sorted array with myId properties added, or null if input is empty
  */

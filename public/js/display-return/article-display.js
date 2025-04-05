@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Article display component builder for frontend ARTICLE rendering
+ * @module frontend/display-return/article-display
+ *
+ * Provides functions for creating DOM elements to display article content,
+ * with collapsible UI components and formatted content presentation.
+ */
+
 import buildCollapseDisplay from "./collapse-item.js";
 
 /**

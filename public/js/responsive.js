@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Responsive file for handling frontend user events (based on user inputs / clicks)
+ * @module frontend/event-handlers
+ *
+ * Sets up event listeners for form submissions and UI element changes,
+ * coordinating display updates and API communication based on user actions.
+ */
+
 //import modules
 import d from "./define-things.js";
 import { runActionButtonDisplay, runScrapeTypeDisplay, runScrapeToDisplay, displayDataReturn } from "./display.js";

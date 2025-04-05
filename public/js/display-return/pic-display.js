@@ -1,4 +1,12 @@
 /**
+ * @fileoverview Picture display component builder for frontend PIC rendering
+ * @module frontend/display-return/pic-display
+ *
+ * Provides functions for creating DOM elements to display pictures,
+ * both as standalone picture lists and as picture lists associated with articles.
+ */
+
+/**
  * Builds ul element containing li array of pictures posteed WITH each article (if any exist)
  * @function buildArticlePicList
  * @param {Object} inputData - Article data object

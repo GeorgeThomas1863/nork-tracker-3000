@@ -1,6 +1,6 @@
 //TO DO:
 
-//1. FOR BACKEND JS Functions, add in the function name to Jsdocs, take out the fucnt separators
+//1. ADD JSdocs to controllers
 //1. ADD in JSDOCS to models; db file; controller files
 //1. Figure out TG display !!!!!!!!
 
@@ -10,6 +10,14 @@
 //1. return correct display when NO data exists
 //1. add some sort of "getting data / loading" screen
 //1. fix the "cannot read properties of null (reading "getAttribute") [whenits trying to pull pics]
+
+/**
+ * @fileoverview Main application entry point for the KCNA scraping service
+ * @module app
+ *
+ * Initializes Express server, connects to MongoDB, and sets up routes.
+ * Configures view engine, middleware, and static file serving.
+ */
 
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";

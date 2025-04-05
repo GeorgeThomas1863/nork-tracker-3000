@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Article scraping controller for UI interactions and automated processes
+ * @module services/articles/articles-scrape
+ *
+ * Coordinates the full article scraping process including fetching article listings,
+ * downloading content, sorting articles, and preparing data for UI display.
+ */
+
 import dbModel from "../../models/db-model.js";
 import CONFIG from "../../config/scrape-config.js";
 
@@ -9,6 +17,7 @@ import { getArticleArray } from "./articles-util.js";
 
 /**
  * API endpoint handler for scraping articles based on CLICK from UI
+ * @function scrapeArticlesClick
  * @param {Object} inputParams - Parameters from the UI
  * @param {string} inputParams.scrapeType - Type of scrape to perform
  * @param {number} inputParams.howMany - Number of articles to retrieve
@@ -51,10 +60,9 @@ export const scrapeArticlesClick = async (inputParams) => {
   return returnObj;
 };
 
-//----------------------
-
 /**
  * Runs Full ARTICLE scrape process (scraping article content from kcna)
+ * @function runScrapeArticles
  * @returns {Promise<Array|null>} Array of article objects or null if no new articles
  */
 export const runScrapeArticles = async () => {

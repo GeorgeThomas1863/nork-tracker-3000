@@ -1,3 +1,11 @@
+/**
+ * @fileoverview KCNA picture fetching, downloading, and uploading service
+ * @module services/pics/pics-service
+ *
+ * Provides functions for finding new picture URLs, downloading images to the filesystem,
+ * and uploading them to Telegram with appropriate metadata and captions.
+ */
+
 import CONFIG from "../../config/scrape-config.js";
 import KCNA from "../../models/kcna-model.js";
 import dbModel from "../../models/db-model.js";
@@ -7,6 +15,7 @@ import { uploadPicsTG, editCaptionTG } from "../tg-api.js";
 
 /**
  * LOOKS FOR / Gets new picture URLs within a range around the current KCNA ID
+ * @function getPicURLs
  * @returns {Promise<Array<Object>>} Array of new picture objects with URLs and metadata
  */
 export const getPicURLs = async () => {
@@ -82,6 +91,7 @@ export const getPicURLs = async () => {
 
 /**
  * Downloads pics from URLs to the file system
+ * @function downloadPicsFS
  * @param {Array<Object>} picArray - Array of picture objects to download
  * @param {string} picArray[].url - URL of the picture
  * @param {string} picArray[].picPath - Local path to save the picture to
@@ -125,6 +135,7 @@ export const downloadPicsFS = async (picArray) => {
 
 /**
  * Uploads pictures to Telegram from the file system
+ * @function uploadPicsFS
  * @param {Object} uploadObj - Object containing upload parameters
  * @param {Array<Object>} uploadObj.picArray - Array of picture objects to upload
  * @param {string} uploadObj.picArray[].picPath - Local path of the picture to upload
