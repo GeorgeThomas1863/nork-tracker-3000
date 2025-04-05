@@ -174,8 +174,7 @@ export const displayTG = async (data) => {
     //   break;
 
     case "scrapePics":
-      await runScrapePics();
-      console.log("FINISHED SCRAPING PICS");
+      console.log("ALLAHU AKBAR");
       break;
   }
 };
