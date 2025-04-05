@@ -21,10 +21,10 @@ import { getPicArray } from "./pics-util.js";
 export const scrapePicsClick = async (inputParams) => {
   const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
 
-  //if user selects new data
-  if (pullNewData === "yesNewData") {
-    await runScrapePics();
-  }
+  // //if user selects new data
+  // if (pullNewData === "yesNewData") {
+  //   await runScrapePics();
+  // }
 
   const modelObj = {
     keyToLookup: "kcnaId",

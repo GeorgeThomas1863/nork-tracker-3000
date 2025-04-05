@@ -23,10 +23,10 @@ import { getArticleArray } from "./articles-util.js";
 export const scrapeArticlesClick = async (inputParams) => {
   const { scrapeType, howMany, scrapeTo, tgId, pullNewData } = inputParams;
 
-  //if set to new run scrape articles
-  if (pullNewData === "yesNewData") {
-    await runScrapeArticles();
-  }
+  // //if set to new run scrape articles
+  // if (pullNewData === "yesNewData") {
+  //   await runScrapeArticles();
+  // }
 
   //get article data from mongo
   const modelObj = {

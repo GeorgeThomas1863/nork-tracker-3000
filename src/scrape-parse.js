@@ -21,7 +21,9 @@ import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
  */
 export const parseCommand = async (req, res) => {
   const inputParams = await setInputParamsDefaults(req.body);
-  console.log(inputParams);
+
+  //GET NEW DATA FIRST / HERE (returns null if off)
+  await runGetNewData();
 
   //run command based on input
   let data = "";
@@ -81,6 +83,46 @@ const setInputParamsDefaults = async (inputParams) => {
 };
 
 /**
+ * Runs a one-time data scraping operation of either pics OR articles OR both
+ * @function runGetNewData
+ * @param {Object} inputParams - Input parameters
+ * @param {string} inputParams.pullNewData - Whether to pull new data ("yesNewData" or "noNewData")
+ * @param {string} inputParams.scrapeType - Type of scrape to perform
+ * @returns {Promise<boolean|null>} True when process completes, null if no action taken
+ */
+export const runGetNewData = async (inputParams) => {
+  const { pullNewData, scrapeType } = inputParams;
+
+  //check if get new data on
+  if (pullNewData === "noNewData") return null;
+
+  //run get new data based on type
+  switch (scrapeType) {
+    case "scrapeArticles":
+      await runScrapeArticles();
+      console.log("FINISHED SCRAPING ARTICLES");
+      break;
+
+    case "scrapePics":
+      await runScrapePics();
+      console.log("FINISHED SCRAPING PICS");
+      break;
+
+    case "scrapeBoth":
+      await runScrapeArticles();
+      console.log("FINISHED GETTING PICS");
+      await runPostArticles();
+      console.log("FINISHED POSTING PICS");
+      await runScrapePics();
+      console.log("FINISHED FUCKER");
+      break;
+  }
+
+  console.log("FINISHED GETTING NEW DATA");
+  return true;
+};
+
+/**
  * Restarts the automatic scraper process for pics AND articles
  * @function runRestartAutoScraper
  * @param {Object} inputParams - Input parameters (currently unused) //WILL FIX
@@ -97,42 +139,6 @@ export const runRestartAutoScraper = async (inputParams) => {
   await runScrapePics();
   console.log("FINISHED FUCKER");
 
-  return true;
-};
-
-/**
- * Runs a one-time data scraping operation of either pics OR articles OR both
- * @function runGetNewData
- * @param {Object} inputParams - Input parameters
- * @param {string} inputParams.pullNewData - Whether to pull new data ("yesNewData" or "noNewData")
- * @param {string} inputParams.scrapeType - Type of scrape to perform
- * @returns {Promise<boolean|null>} True when process completes, null if no action taken
- */
-export const runGetNewData = async (inputParams) => {
-  const { pullNewData, scrapeType } = inputParams;
-
-  //check if get new data on
-  if (pullNewData === "noNewData") return null;
-  switch (scrapeType) {
-    case "scrapeArticles":
-      await runScrapeArticles();
-      console.log("FINISHED SCRAPING ARTICLES");
-      break;
-
-    case "scrapePics":
-      await runScrapePics();
-      console.log("FINISHED SCRAPING PICS");
-      break;
-
-    case "scrapeBoth":
-      await runScrapeArticles();
-      await runPostArticles();
-      await runScrapePics();
-      console.log("FINISHED SCRAPING ARTICLES AND PICS");
-      break;
-  }
-
-  console.log("FINISHED GETTING NEW DATA");
   return true;
 };
 
