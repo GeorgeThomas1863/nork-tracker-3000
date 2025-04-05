@@ -7,6 +7,7 @@
 //1. get pull single url WORKING
 //1. reset up auto scraper, have an on off switch
 
+//1. style submit button better, make bigger put in middle
 //1. return correct display when NO data exists
 //1. add some sort of "getting data / loading" screen
 //1. fix the "cannot read properties of null (reading "getAttribute") [whenits trying to pull pics]
