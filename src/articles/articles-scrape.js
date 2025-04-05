@@ -33,6 +33,7 @@ export const scrapeArticlesClick = async (inputParams) => {
   const articleDataArray = await dataModel.getLastItemsArray();
 
   returnObj.dataArray = articleDataArray;
+  returnObj.displayType = inputParams.scrapeType;
 
   //otherwise return obj and process on frontend
   return returnObj;

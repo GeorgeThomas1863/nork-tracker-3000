@@ -31,6 +31,7 @@ export const scrapePicsClick = async (inputParams) => {
 
   //SHOULD RENAME COMBINE WITH BELOW
   returnObj.dataArray = picDataArray;
+  returnObj.displayType = inputParams.scrapeType;
 
   //otherwise return obj
   return returnObj;

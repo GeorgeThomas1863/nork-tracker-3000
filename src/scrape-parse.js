@@ -178,7 +178,7 @@ export const checkIfEmpty = async (inputData) => {
   //otherwise return custom empty obj
   const emptyObj = {
     dataArray: { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE KCNA <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" },
-    scrapeType: "empty",
+    displayType: "empty",
   };
 
   return emptyObj;
@@ -202,7 +202,7 @@ export const displayTG = async (data) => {
       };
 
       await postArticlesLoop(articleObj);
-      console.log("FINISHED UPLOADING ARTICLES?!?");
+      console.log("FINISHED UPLOADING ARTICLES");
       break;
 
     case "scrapePics":

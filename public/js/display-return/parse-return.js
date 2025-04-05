@@ -21,14 +21,14 @@ import buildEmptyDisplay from "./display-empty.js";
  * @returns {Promise<HTMLElement>} Container element with the parsed and formatted data
  */
 export const parseDataReturn = async (inputData) => {
-  const { dataArray, scrapeType } = inputData;
+  const { dataArray, displayType } = inputData;
 
   //data container for return
   const container = document.createElement("div");
   container.className = "data-container";
 
   //display based on return data
-  switch (scrapeType) {
+  switch (displayType) {
     //empty return
     case "empty":
       const emptyData = await buildEmptyDisplay(dataArray);
