@@ -48,7 +48,7 @@ export const parseCommand = async (req, res) => {
   }
 
   //check if empty return
-  if ((data.dataArray.picDataArray && data.dataArray.picDataArray.length === 0) || (data.dataArray.articleDataArray && data.dataArray.articleDataArray.length === 0)) {
+  if (data.dataArray && data.dataArray.length === 0) {
     data.dataArray = { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE SITE (switch re-scrape selection above to YES and run again)" };
     data.dataType = "empty";
   }

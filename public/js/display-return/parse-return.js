@@ -32,7 +32,7 @@ export const parseDataReturn = async (inputData) => {
   switch (dataType) {
     //empty return
     case "empty":
-      container.appendChild(dataArray.data);
+      container.appendChild(dataArray.text);
       // const emptyData = await displayEmptyData(dataArray);
       break;
 
