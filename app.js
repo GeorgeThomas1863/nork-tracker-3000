@@ -1,7 +1,6 @@
 //TO DO:
 
 //1. ADD JSdocs to controllers
-//1. ADD in JSDOCS to models; db file; controller files
 //1. Figure out TG display !!!!!!!!
 
 //1. get pull single url WORKING
