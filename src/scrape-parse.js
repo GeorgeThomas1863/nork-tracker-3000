@@ -1,6 +1,6 @@
 /**
  * @fileoverview Command parsing and execution service for scraping operations
- * @module controllers/parser
+ * @module /src/scrape-parse.js
  *
  * Handles frontend command requests, parses parameters, and executes the appropriate
  * scraping operations for articles, pictures, or both with configurable options.
@@ -13,9 +13,8 @@ import { runPostArticles } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics } from "./pics/pics-scrape.js";
 
 /**
- * Parses and processes commands from the frontend request
+ * Parses and processes commands from frontend request
  * @function parseCommand
- * @param {Object} req - Express request object
  * @param {Object} req.body - Request body containing command parameters
  * @param {Object} res - Express response object
  * @returns {Promise<Object>} JSON response with command results
@@ -49,17 +48,10 @@ export const parseCommand = async (req, res) => {
   return res.json(data);
 };
 
-//-----------
-
 /**
  * Sets default values for any missing input parameters
  * @function setInputParamsDefaults
  * @param {Object} inputParams - Raw input parameters from request
- * @param {string} [inputParams.scrapeType] - Type of scrape operation
- * @param {string} [inputParams.scrapeTo] - Destination for scraped data
- * @param {string} [inputParams.tgId] - Telegram ID for sending results
- * @param {number} [inputParams.howMany] - Number of items to scrape
- * @param {string} [inputParams.pullNewData] - Whether to pull new data
  * @returns {Promise<Object>} Input parameters with defaults applied
  */
 const setInputParamsDefaults = async (inputParams) => {

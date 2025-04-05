@@ -1,6 +1,6 @@
 /**
  * @fileoverview Article scraping controller for UI interactions and automated processes
- * @module services/articles/articles-scrape
+ * @module src/articles/articles-scrape.js
  *
  * Coordinates the full article scraping process including fetching article listings,
  * downloading content, sorting articles, and preparing data for UI display.
@@ -12,18 +12,12 @@ import CONFIG from "../../config/scrape-config.js";
 import { getArticleListHtml, getArticleObjArray } from "./articles-get.js";
 import { parseArticleList, sortArticleObjArray } from "./articles-parse.js";
 import { logArticleLookup, storeArticleList, storeArticleObj } from "./articles-store.js";
-// import { runPostArticles } from "./articles-post.js";
 import { getArticleArray } from "./articles-util.js";
 
 /**
  * API endpoint handler for scraping articles based on CLICK from UI
  * @function scrapeArticlesClick
- * @param {Object} inputParams - Parameters from the UI
- * @param {string} inputParams.scrapeType - Type of scrape to perform
- * @param {number} inputParams.howMany - Number of articles to retrieve
- * @param {string} inputParams.scrapeTo - Destination for scraped data
- * @param {string} inputParams.tgId - Telegram ID
- * @param {string} inputParams.pullNewData - Whether to pull new data or use existing
+ * @param {Object} inputParams - Data Object with input params from the UI
  * @returns {Promise<Object|Array>} Article data or status object
  */
 export const scrapeArticlesClick = async (inputParams) => {
@@ -32,7 +26,6 @@ export const scrapeArticlesClick = async (inputParams) => {
   //if set to new run scrape articles
   if (pullNewData === "yesNewData") {
     await runScrapeArticles();
-    // await postArticlesAuto(); //pretty sure dont want to post here
   }
 
   //get article data from mongo
@@ -44,10 +37,9 @@ export const scrapeArticlesClick = async (inputParams) => {
   const dataModel = new dbModel(modelObj, CONFIG.articleContentCollection);
   const articleDataArray = await dataModel.getLastItemsArray();
 
-  const returnObj = {
-    dataArray: articleDataArray,
-    dataType: scrapeType,
-  };
+  console.log("ARTICLE DATA ARRAY!!!!!!!");
+  console.log(articleDataArray);
+  console.log(articleDataArray.length);
 
   //if empty //UNFUCK
   if (articleDataArray.length === 0) {
@@ -55,6 +47,11 @@ export const scrapeArticlesClick = async (inputParams) => {
     // console.log(articleDataArray);
     return articleDataArray;
   }
+
+  const returnObj = {
+    dataArray: articleDataArray,
+    dataType: scrapeType,
+  };
 
   //otherwise return obj and process on frontend
   return returnObj;
