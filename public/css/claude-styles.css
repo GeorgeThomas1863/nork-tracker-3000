@@ -304,7 +304,7 @@ PICS STYLES */
 
 .empty-text {
   background-color: white;
-  padding: 2rem 5rem; /* Increased padding for more space */
+  padding: 1rem 3rem; /* Increased padding for more space */
   border-radius: 8px;
   font-size: 3rem; /* Slightly reduced for professionalism */
   font-weight: 600; /* Semi-bold is more professional than full bold */
@@ -315,6 +315,6 @@ PICS STYLES */
 }
 
 .empty-text h2 {
-  margin-top: 2rem;
+  margin-top: 3rem;
   font-size: 2rem; /* Adds space between the two lines */
 }
