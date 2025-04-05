@@ -297,18 +297,28 @@ PICS STYLES */
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 1rem 0;
-  list-style-type: none; /* Removes default list bullets */
+  padding: 60px 0; /* Increased vertical padding for more space */
+  list-style-type: none;
   margin: 0;
 }
 
 .empty-text {
   background-color: white;
-  padding: 2rem;
-  border-radius: 8px; /* Optional: adds rounded corners */
-  font-size: 3rem;
-  font-weight: bold; /* Makes text bold */
+  padding: 40px 60px; /* Increased padding for more space */
+  border-radius: 8px;
+  font-size: 20px; /* Slightly reduced for professionalism */
+  font-weight: 600; /* Semi-bold is more professional than full bold */
   text-align: center;
-  max-width: 80%; /* Ensures the container isn't too wide */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+  max-width: 80%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: #3a3a3a; /* Dark gray instead of pure black */
+  line-height: 1.6; /* Better line spacing */
+  letter-spacing: 0.01em; /* Subtle letter spacing */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; /* System font stack */
+  border-left: 4px solid #e74c3c; /* Accent color for visual interest */
+}
+
+/* Style for line break in the message */
+.empty-text br {
+  margin-bottom: 12px; /* Adds space between the two lines */
 }
