@@ -51,9 +51,6 @@ export const getArticleListItem = async (article, isFirst) => {
  * Creates an article element by parsing article data (sends result to be added to li)
  * @function getArticleElement
  * @param {Object} article - Article data object
- * @param {string} article.title - The title of the article
- * @param {string} article.date - The date of the article
- * @param {string} article.content - The content of the article
  * @returns {Promise<HTMLElement>} A formatted DOM article element
  */
 export const getArticleElement = async (article) => {

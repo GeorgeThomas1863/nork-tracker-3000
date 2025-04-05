@@ -107,7 +107,6 @@ export const runScrapeToDisplay = async (buttonClicked) => {
  * then unhides the return data display container / element
  * @function displayDataReturn
  * @param {Object} inputData - Data object returned from backend
- * @param {Array} inputData.dataArray - Array of scraped data items
  * @returns {Promise<void>} Promise that resolves when data is displayed
  */
 export const displayDataReturn = async (inputData) => {

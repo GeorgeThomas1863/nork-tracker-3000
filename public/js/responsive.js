@@ -35,9 +35,6 @@ const scrapeSubmit = async (e) => {
  * Handles frontend page display changes based on user inputs (drop downs / buttons / selections)
  * @function changeDisplay
  * @param {Event} e - The DOM event object
- * @param {HTMLElement} e.target - The element that triggered the event
- * @param {string} e.target.id - The ID of the element that triggered the event
- * @param {string} e.target.value - The value of the element that triggered the event
  * @returns {Promise<void>} - Promise that resolves when display change is complete
  */
 const changeDisplay = async (e) => {

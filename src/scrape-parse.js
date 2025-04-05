@@ -48,10 +48,7 @@ export const parseCommand = async (req, res) => {
   }
 
   //check if empty return
-  if (data.dataArray && data.dataArray.length === 0) {
-    data.dataArray = { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE SITE <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" };
-    data.dataType = "empty";
-  }
+  data = await checkIfEmpty(data);
 
   return res.json(data);
 };
@@ -155,4 +152,27 @@ export const runRestartAutoScraper = async (inputParams) => {
  */
 export const runScrapeURL = async () => {
   console.log("scrapeURL");
+};
+
+//prob put somewhere else
+/**
+ * Checks if the input data array is empty and provides appropriate response
+ * @function checkIfEmpty
+ * @param {Object} inputData - The data object to check (containing data from backend)
+ * @returns {Object|null} Original data if not empty, formatted message if empty, or null if invalid
+ */
+export const checkIfEmpty = async (inputData) => {
+  //return input if error (add error return here?)!!!
+  if (!inputData || !inputData.dataArray) return null;
+
+  //return if data exists
+  if (inputData.dataArray.length > 0) return inputData;
+
+  //otherwise return empty obj
+  const emptyObj = {
+    dataArray: { text: "NO DATA TO DISPLAY, PLEASE RE-SCRAPE SITE <br> <h2>[Switch re-scrape selection above to YES and run again]</h2>" },
+    dataType: "empty",
+  };
+
+  return emptyObj;
 };

@@ -10,7 +10,6 @@
  * Builds ul element containing li array of pictures posteed WITH each article (if any exist)
  * @function buildArticlePicList
  * @param {Object} inputData - Article data object
- * @param {Array} [inputData.articlePicArray] - Array of picture objects associated with the article
  * @returns {Promise<HTMLElement|null>} A DOM element containing the picture list or null if no pictures
  */
 export const buildArticlePicList = async (inputData) => {
@@ -68,7 +67,6 @@ const getPicListItem = async (pic) => {
  * Defines path to stored pic on fs as img src
  * @function getPicElement
  * @param {Object} pic - Picture data object
- * @param {string} pic.picPath - Path to the picture file
  * @returns {Promise<HTMLElement>} An img element with the picture
  */
 const getPicElement = async (pic) => {
