@@ -30,12 +30,19 @@ export const parseDataReturn = async (inputData) => {
 
   //display based on return data
   switch (dataType) {
+    //empty return
+    case "empty":
+      container.appendChild(dataArray.data);
+      // const emptyData = await displayEmptyData(dataArray);
+      break;
+
     //for pics
     case d.scrapePics.id:
       const picList = await buildPicList(dataArray);
-      if (picList && picList.children.length > 0) {
-        container.appendChild(picList);
-      }
+      container.appendChild(picList);
+      // if (picList && picList.children.length > 0) {
+      //   container.appendChild(picList);
+      // }
       break;
 
     //for articles

@@ -41,12 +41,12 @@ export const scrapeArticlesClick = async (inputParams) => {
   console.log(articleDataArray);
   console.log(articleDataArray.length);
 
-  //if empty //UNFUCK
-  if (articleDataArray.length === 0) {
-    articleDataArray.empty = "YES";
-    // console.log(articleDataArray);
-    return articleDataArray;
-  }
+  // //if empty //UNFUCK
+  // if (articleDataArray.length === 0) {
+  //   articleDataArray.empty = "YES";
+  //   // console.log(articleDataArray);
+  //   return articleDataArray;
+  // }
 
   const returnObj = {
     dataArray: articleDataArray,
