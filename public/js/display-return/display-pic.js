@@ -13,6 +13,8 @@
  * @returns {Promise<HTMLElement|null>} A DOM element containing the picture list or null if no pictures
  */
 export const buildArticlePicList = async (inputData) => {
+  console.log("FUCK YOU FAGGOT");
+  console.log(inputData);
   //check if no pics
   if (!inputData || !inputData.articlePicArray || inputData.articlePicArray.length === 0) return null;
 
@@ -72,13 +74,11 @@ const getPicListItem = async (pic) => {
 const getPicElement = async (pic) => {
   const picElement = document.createElement("img");
   picElement.className = "pic-item";
+  console.log(pic);
 
   //get the path
   const fileNameRaw = pic.picPath;
-  console.log("AHHHHHHHHHHHHHHHHHHHHHHHHH");
-  console.log(fileNameRaw);
-  // const fileName = fileNameRaw.split("\\").pop();
-  const fileName = fileNameRaw.split("/").pop(); //RESET!!! (for linux)
+  const fileName = fileNameRaw.split("/").pop();
   const picPath = "/kcna-pics/" + fileName;
 
   //add to element

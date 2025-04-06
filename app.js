@@ -70,5 +70,5 @@ db.dbConnect().then(() => {
   //port to listen
   // app.listen(CONFIG.port);
 
-  app.listen(1882);
+  app.listen(1896);
 });
