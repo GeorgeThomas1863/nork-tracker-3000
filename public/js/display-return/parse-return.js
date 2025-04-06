@@ -12,6 +12,7 @@ import { buildPicList } from "./display-pic.js";
 import { buildArticleList } from "./display-article.js";
 import { buildComboList } from "./display-combo.js";
 import buildEmptyDisplay from "./display-empty.js";
+import buildTGDisplay from "./display-tg.js";
 
 /**
  * Parses returned data from backend and builds appropriate DOM elements by running
@@ -33,6 +34,12 @@ export const parseDataReturn = async (inputData) => {
     case "empty":
       const emptyData = await buildEmptyDisplay(dataArray);
       container.appendChild(emptyData);
+      break;
+
+    //tg post / display
+    case "tgDisplay":
+      const tgData = await buildTGDisplay(dataArray);
+      container.appendChild(tgData);
       break;
 
     //for pics

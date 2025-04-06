@@ -1,6 +1,8 @@
 //TO DO:
 
-//1. build combo Display for TG (pics and articles)
+//1. When getting PICS / ARTICLES to upload / display make a check for whether shit already downloaded and ONLY download if needed
+//(need to refactor)
+
 //1. Get AUTO scraper re-working
 //1. MASSIVE REFACTOR NEEDED
 //1. add in password to site / add auth
@@ -66,5 +68,7 @@ app.use(routes);
  */
 db.dbConnect().then(() => {
   //port to listen
-  app.listen(CONFIG.port);
+  // app.listen(CONFIG.port);
+
+  app.listen(2209);
 });

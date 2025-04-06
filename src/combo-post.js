@@ -11,15 +11,15 @@ import { postArticlesLoop } from "./articles/articles-post.js";
 
 /**
  * Processes and posts an array of articles with their associated pictures to TG (loops through array)
- * @function postComboLoop
+ * @function postComboLoopTG
  * @param {Object} inputData - Object containing article data array and tg channel to post to
  * @returns {Promise<Object>} Object containing count of pictures and articles posted
  */
-export const postComboLoop = async (inputData) => {
+export const postComboLoopTG = async (inputData) => {
   const { dataArray, tgId } = inputData;
 
   let x = 0; //# pics posted
-  let y = 0; //# articles posetd
+  let y = 0; //# articles posted
   for (const article of dataArray) {
     //skip empty items
     if (!article || article.length === 0) continue;
@@ -38,6 +38,9 @@ export const postComboLoop = async (inputData) => {
     pics: x,
     articles: y,
   };
+
+  console.log("POSTED OBJ HERE");
+  console.log(postedObj);
 
   return postedObj;
 };

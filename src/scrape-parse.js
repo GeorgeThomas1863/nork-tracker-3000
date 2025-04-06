@@ -12,7 +12,7 @@ import { scrapeArticlesClick, runScrapeArticles } from "./articles/articles-scra
 import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics, runGetNewPics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
-import { postComboLoop } from "./combo-post.js";
+import { postComboLoopTG } from "./combo-post.js";
 
 /**
  * Parses and processes commands from frontend request
@@ -194,6 +194,7 @@ export const displayTG = async (data) => {
   if (scrapeTo !== "displayTG") return null;
 
   //otherwise
+  let tgData = {};
   switch (scrapeType) {
     case "scrapeArticles":
       const articleObj = {
@@ -202,6 +203,8 @@ export const displayTG = async (data) => {
       };
 
       await postArticlesLoop(articleObj);
+      tgData.articles = dataArray.length;
+
       console.log("FINISHED UPLOADING ARTICLES");
       break;
 
@@ -211,12 +214,23 @@ export const displayTG = async (data) => {
         picArray: dataArray,
         postToId: tgId,
       };
-      // console.log(uploadObj);
+
       await uploadPicsFS(picObj);
+      tgData.pics = dataArray.length;
       break;
 
     case "scrapeBoth":
-      await postComboLoop(data);
+      tgData = await postComboLoopTG(data);
       break;
   }
+
+  const returnObj = {
+    dataArray: tgData,
+    displayType: "tgDisplay",
+  };
+
+  console.log("TG RETURN TEST HERE!!");
+  console.log(returnObj);
+
+  return returnObj;
 };
