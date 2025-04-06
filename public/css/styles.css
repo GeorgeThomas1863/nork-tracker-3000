@@ -2,10 +2,6 @@ body {
   font-family: "Roboto Condensed", sans-serif;
 }
 
-/* main {
-  text-align: center;
-} */
-
 h1,
 h2,
 p {
@@ -43,9 +39,6 @@ nav ul {
   margin-left: 2rem;
   display: flex;
   gap: 1rem;
-  /* justify-content: center; */
-  /* margin-top: 3rem;
-  margin-left: 3rem; */
 }
 
 #content-wrapper {

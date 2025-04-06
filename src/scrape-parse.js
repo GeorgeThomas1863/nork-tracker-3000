@@ -132,21 +132,12 @@ export const runGetNewData = async (inputParams) => {
 };
 
 /**
- * Restarts the automatic scraper process for pics AND articles
+ * Dynamically the automatic scraper process for pics AND articles
  * @function runRestartAutoScraper
- * @param {Object} inputParams - Input parameters (currently unused) //WILL FIX
  * @returns {Promise<boolean>} True when process completes
  */
-export const runRestartAutoScraper = async (inputParams) => {
-  //MAKE WAY TO HANDLE SETTING TG ID
-
-  //HAVE IT RESTART HOURLY SCRAPER, JUST GETTING NEW DATA FOR TESTING
-  await runScrapeArticles();
-  console.log("FINISHED GETTING PICS");
-  await runPostArticles();
-  console.log("FINISHED POSTING PICS");
-  await runScrapePics();
-  console.log("FINISHED FUCKER");
+export const runRestartAutoScraper = async () => {
+  await import("./scrape-auto.js");
 
   return true;
 };
