@@ -18,7 +18,7 @@ import { runScrapePics } from "./pics/pics-scrape.js";
  * @param {Function} scrapeFunction - The function to execute hourly
  * @returns {void}
  */
-const scrapeHourly = async (scrapeFunction) => {
+export const scrapeHourly = async (scrapeFunction) => {
   scrapeFunction();
 
   // Calculate time until the next hour

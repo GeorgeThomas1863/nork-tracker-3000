@@ -30,6 +30,9 @@ import CONFIG from "./config/scrape-config.js";
 import routes from "./routes/kcna-routes.js";
 import * as db from "./data/db.js";
 
+//imports and EXECUTES auto scraper (by not setting to a variable just exeuctes file, per claude)
+import "./src/scrape-auto.js";
+
 /**
  * Get / define the path / directory for the current project
  * @type {string}
@@ -56,7 +59,6 @@ app.use(express.static("public"));
  * (simplifies uploading / downloading pics)
  */
 app.use(CONFIG.expressPicPath, express.static(CONFIG.savePicPathBase));
-
 app.use(routes);
 
 /**
