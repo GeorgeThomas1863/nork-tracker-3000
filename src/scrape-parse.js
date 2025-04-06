@@ -105,7 +105,7 @@ export const runGetNewData = async (inputParams) => {
   const { pullNewData, scrapeType } = inputParams;
 
   //check if get new data on
-  if (pullNewData === "noNewData") return null;
+  if (pullNewData !== "yesNewData") return null;
 
   //run get new data based on type
   switch (scrapeType) {
