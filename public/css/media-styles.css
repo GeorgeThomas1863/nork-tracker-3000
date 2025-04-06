@@ -1,105 +1,144 @@
 /* MEDIA QUERIES FOR STYLES.CSS */
 
-/* Medium devices (tablets, 768px and down) */
-@media only screen and (min-width: 577px) and (max-width: 768px) {
-  #content-wrapper {
-    width: 70%;
-  }
-
-  #fuck-forms label {
-    min-width: 8rem;
-  }
-}
-
-/* Small devices (phones, 576px and down) */
-@media only screen and (max-width: 576px) {
-  nav ul {
-    margin-top: 1rem;
-    margin-left: 1rem;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  #content-wrapper {
-    margin-top: 1rem;
-    margin-left: 0.5rem;
-    width: 90%;
-  }
-
-  button {
-    padding: 0.4rem 1rem;
-    font-size: 1.5rem;
-    width: 100%;
-  }
-
-  #fuck-forms li {
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-  }
-
-  #fuck-forms label {
-    font-size: 1.5rem;
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-    text-align: left;
-  }
-
-  #fuck-forms input,
-  #fuck-forms select {
-    font-size: 1.2rem;
-    min-width: unset;
-    width: 90%;
-  }
-
-  #background-pic {
-    transform: scale(1.5);
-    transform-origin: center;
-  }
-}
-
-/* ------------------ */
-
-/* FOR RETURN-SYTLES.CSS */
-
-/* Large tablets and small desktops */
+/* ===== LARGE TABLETS AND SMALL DESKTOPS (769px TO 992px) ===== */
 @media only screen and (min-width: 769px) and (max-width: 992px) {
   .pic-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
   }
-}
 
-/* Medium devices (tablets, 768px and down) */
-@media only screen and (min-width: 577px) and (max-width: 768px) {
-  /* Container adjustments */
   #data-return-element {
     margin-top: 2rem;
     margin-left: 1.5rem;
     margin-right: 2rem;
   }
-
-  /* Pictures grid - change to 2 columns for tablets */
-  .pic-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Article element adjustments */
-  .article-element {
-    padding: 2rem;
-  }
-
-  /* Collapsible adjustments */
-  .article-pic-list-collapse .collapsible-header {
-    width: 20%;
-  }
 }
 
-/* Small devices (phones, 576px and down) */
-@media only screen and (max-width: 576px) {
+/* ===== MEDIUM DEVICES (TABLETS, 577px TO 768px) ===== */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  /* ===== GENERAL & FORM STYLES ===== */
+  #content-wrapper {
+    width: 85%;
+  }
+
+  #fuck-forms label {
+    min-width: 7rem;
+    font-size: 1.5rem;
+  }
+
+  #fuck-forms input,
+  #fuck-forms select {
+    font-size: 1.2rem;
+  }
+
+  .action-button {
+    font-size: 1.5rem;
+    padding: 0.4rem 1.5rem;
+  }
+
   /* Container adjustments */
   #data-return-element {
     margin-top: 1.5rem;
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+
+  /* Pictures grid - change to 2 columns for tablets */
+  .pic-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  /* Article element adjustments */
+  .article-element {
+    padding: 1.8rem;
+  }
+
+  /* Collapsible adjustments */
+  .article-pic-list-collapse .collapsible-header {
+    width: 25%;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===== SMALL DEVICES (PHONES, 576PX AND DOWN) ===== */
+@media only screen and (max-width: 576px) {
+  /* ===== GENERAL & FORM STYLES ===== */
+
+  /* change background pic */
+  #background-pic {
+    content: url("/images/KJU2.jpg");
+  }
+
+  /* change default button color (make slightly darker) */
+  button {
+    background: rgb(170, 170, 170);
+  }
+
+  /* Keep nav buttons on same line but make them smaller */
+  nav ul {
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    /* align-items: top; */
+    gap: 1.5rem;
+  }
+
+  .action-button {
+    padding: 0.4rem 1.5rem;
+    font-size: 1.3rem;
+    white-space: nowrap;
+  }
+
+  #content-wrapper {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 95%;
+  }
+
+  /* Keep labels beside inputs but make them more compact */
+  #fuck-forms li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  #fuck-forms label {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    min-width: 6rem;
+    text-align: right;
+  }
+
+  #fuck-forms select {
+    font-size: 1.2rem;
+    height: 2.3rem;
+    flex: 1;
+  }
+
+  #fuck-forms input {
+    font-size: 1.2rem;
+    height: 2rem;
+  }
+
+  button#submit-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 0.4rem 3rem;
+    font-size: 1.3rem;
+  }
+
+  /* Container adjustments */
+  #data-return-element {
+    margin-top: 2rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
   }
 
   /* Article list adjustments */
@@ -109,7 +148,7 @@
 
   /* Article element styling */
   .article-element {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 
   /* Article title */
@@ -121,70 +160,129 @@
   /* Article date */
   .article-date {
     font-size: 0.85rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
   }
 
   /* Article content */
   .article-content {
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.5;
+  }
+
+  .article-content p {
+    margin-bottom: 0.8rem;
   }
 
   .article-content h3 {
     font-size: 1.2rem;
-    margin: 1.5rem 0 0.8rem;
+    margin: 1.2rem 0 0.6rem;
   }
 
   .article-content h4 {
     font-size: 1.1rem;
-    margin: 1.2rem 0 0.6rem;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .article-content blockquote {
+    padding-left: 0.7rem;
+  }
+
+  .article-content pre {
+    padding: 0.7rem;
+    margin: 1rem 0;
   }
 
   /* Pictures grid - change to 1 column */
   .pic-list {
     grid-template-columns: 1fr;
     gap: 0.8rem;
+    width: 90%;
+    margin: 0 auto;
   }
 
-  .pic-list-item {
-    padding-bottom: 66.67%; /* Keep the 3:2 aspect ratio */
+  .pic-item {
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   /* Collapsible header */
   .collapsible-header {
-    padding: 12px 16px;
+    padding: 12px 15px;
   }
 
   .collapsible-title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    max-width: calc(100% - 36px);
   }
 
   .collapsible-arrow {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
   }
 
   /* Article pic list collapse adjustments */
   .article-pic-list-collapse .collapsible-header {
-    width: 35%;
+    width: 50%;
     padding: 8px 10px;
   }
 
   .article-pic-list-collapse .collapsible-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   /* Empty container */
+  .empty-container {
+    margin-top: 2rem;
+  }
+
   .empty-text {
-    padding: 0.8rem 1.5rem;
-    font-size: 1.8rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.5rem;
     max-width: 90%;
   }
 
   .empty-text h2 {
-    margin-top: 1.5rem;
-    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION FOR PHONES ===== */
+@media only screen and (max-width: 896px) and (orientation: landscape) {
+  /* ===== GENERAL & FORM STYLES ===== */
+  #content-wrapper {
+    width: 80%;
+    margin-left: 2rem;
+  }
+
+  #fuck-forms li {
+    margin-bottom: 0.5rem; /* Reduce vertical spacing in landscape */
+  }
+
+  #fuck-forms label {
+    font-size: 1.2rem;
+    min-width: 8rem;
+  }
+
+  nav ul {
+    margin-left: 2rem;
+  }
+
+  .pic-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #data-return-element {
+    margin-top: 1rem;
+  }
+
+  .article-element {
+    padding: 1.5rem;
+  }
+
+  .article-content {
+    font-size: 0.9rem;
   }
 }
