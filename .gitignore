@@ -1,6 +1,7 @@
 # Stuff
 config/
 /config*
+/config/*
 .env
 
 # logs
