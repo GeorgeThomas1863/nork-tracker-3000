@@ -1,0 +1,190 @@
+/* MEDIA QUERIES FOR STYLES.CSS */
+
+/* Medium devices (tablets, 768px and down) */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  #content-wrapper {
+    width: 70%;
+  }
+
+  #fuck-forms label {
+    min-width: 8rem;
+  }
+}
+
+/* Small devices (phones, 576px and down) */
+@media only screen and (max-width: 576px) {
+  nav ul {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #content-wrapper {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    width: 90%;
+  }
+
+  button {
+    padding: 0.4rem 1rem;
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  #fuck-forms li {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+
+  #fuck-forms label {
+    font-size: 1.5rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  #fuck-forms input,
+  #fuck-forms select {
+    font-size: 1.2rem;
+    min-width: unset;
+    width: 90%;
+  }
+
+  #background-pic {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+}
+
+/* ------------------ */
+
+/* FOR RETURN-SYTLES.CSS */
+
+/* Large tablets and small desktops */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .pic-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  /* Container adjustments */
+  #data-return-element {
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 2rem;
+  }
+
+  /* Pictures grid - change to 2 columns for tablets */
+  .pic-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Article element adjustments */
+  .article-element {
+    padding: 2rem;
+  }
+
+  /* Collapsible adjustments */
+  .article-pic-list-collapse .collapsible-header {
+    width: 20%;
+  }
+}
+
+/* Small devices (phones, 576px and down) */
+@media only screen and (max-width: 576px) {
+  /* Container adjustments */
+  #data-return-element {
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* Article list adjustments */
+  .article-list {
+    gap: 1.5rem;
+  }
+
+  /* Article element styling */
+  .article-element {
+    padding: 1.5rem;
+  }
+
+  /* Article title */
+  .article-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Article date */
+  .article-date {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+  }
+
+  /* Article content */
+  .article-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .article-content h3 {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.8rem;
+  }
+
+  .article-content h4 {
+    font-size: 1.1rem;
+    margin: 1.2rem 0 0.6rem;
+  }
+
+  /* Pictures grid - change to 1 column */
+  .pic-list {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .pic-list-item {
+    padding-bottom: 66.67%; /* Keep the 3:2 aspect ratio */
+  }
+
+  /* Collapsible header */
+  .collapsible-header {
+    padding: 12px 16px;
+  }
+
+  .collapsible-title {
+    font-size: 1.4rem;
+  }
+
+  .collapsible-arrow {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  /* Article pic list collapse adjustments */
+  .article-pic-list-collapse .collapsible-header {
+    width: 35%;
+    padding: 8px 10px;
+  }
+
+  .article-pic-list-collapse .collapsible-title {
+    font-size: 1.2rem;
+  }
+
+  /* Empty container */
+  .empty-text {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.8rem;
+    max-width: 90%;
+  }
+
+  .empty-text h2 {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+  }
+}
