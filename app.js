@@ -1,10 +1,7 @@
 //TO DO:
 
-//1. FOR TG UPLOAD when getting PICS / ARTICLES make a check for whether shit already downloaded and ONLY download if needed
-//(need to refactor)
-
 //1. Get AUTO scraper re-working
-//1. MASSIVE REFACTOR NEEDED
+//1. MASSIVE REFACTOR NEEDED (remake as models)
 //1. add in password to site / add auth
 
 //1. get pull single url WORKING
