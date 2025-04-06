@@ -1,15 +1,14 @@
 //TO DO:
 
-//1. Get AUTO scraper re-working
-//1. MASSIVE REFACTOR NEEDED (remake as models)
-//1. add in password to site / add auth
-
 //1. get pull single url WORKING
-//1. reset up auto scraper, have an on off switch
+//1. add some sort of "getting data / loading" screen
+
+//1. make auto scraper upload article pic combo?
+//1. add in password to site / add auth???
+//1. add on off switch to auto scraper
+//1. make media queries nicer
 
 //1. style submit button better, make bigger put in middle
-//1. return correct display when NO data exists
-//1. add some sort of "getting data / loading" screen
 //1. fix the "cannot read properties of null (reading "getAttribute") [whenits trying to pull pics]
 
 /**
@@ -32,7 +31,7 @@ import * as db from "./data/db.js";
 
 //TURN BACK ON
 //imports and EXECUTES auto scraper (by not setting to a variable just exeuctes file, per claude)
-// import "./src/scrape-auto.js";
+import "./src/scrape-auto.js";
 
 /**
  * Get / define the path / directory for the current project
