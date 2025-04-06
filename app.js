@@ -68,5 +68,7 @@ app.use(routes);
  */
 db.dbConnect().then(() => {
   //port to listen
-  app.listen(CONFIG.port);
+  // app.listen(CONFIG.port);
+
+  app.listen(1882);
 });

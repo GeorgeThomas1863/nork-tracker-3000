@@ -75,7 +75,10 @@ const getPicElement = async (pic) => {
 
   //get the path
   const fileNameRaw = pic.picPath;
-  const fileName = fileNameRaw.split("/").pop();
+  console.log("AHHHHHHHHHHHHHHHHHHHHHHHHH");
+  console.log(fileNameRaw);
+  // const fileName = fileNameRaw.split("\\").pop();
+  const fileName = fileNameRaw.split("/").pop(); //RESET!!! (for linux)
   const picPath = "/kcna-pics/" + fileName;
 
   //add to element
