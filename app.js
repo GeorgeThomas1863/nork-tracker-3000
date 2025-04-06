@@ -1,6 +1,6 @@
 //TO DO:
 
-//1. When getting PICS / ARTICLES to upload / display make a check for whether shit already downloaded and ONLY download if needed
+//1. FOR TG UPLOAD when getting PICS / ARTICLES make a check for whether shit already downloaded and ONLY download if needed
 //(need to refactor)
 
 //1. Get AUTO scraper re-working
@@ -68,7 +68,5 @@ app.use(routes);
  */
 db.dbConnect().then(() => {
   //port to listen
-  // app.listen(CONFIG.port);
-
-  app.listen(2209);
+  app.listen(CONFIG.port);
 });
