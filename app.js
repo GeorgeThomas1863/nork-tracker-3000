@@ -31,7 +31,7 @@ import * as db from "./data/db.js";
 
 //TURN BACK ON
 //imports and EXECUTES auto scraper (by not setting to a variable just exeuctes file, per claude)
-import "./src/scrape-auto.js";
+// import "./src/scrape-auto.js";
 
 /**
  * Get / define the path / directory for the current project
@@ -67,5 +67,6 @@ app.use(routes);
  */
 db.dbConnect().then(() => {
   //port to listen
-  app.listen(CONFIG.port);
+  // app.listen(CONFIG.port);
+  app.listen(1801);
 });

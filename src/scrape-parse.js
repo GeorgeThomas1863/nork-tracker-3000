@@ -137,7 +137,9 @@ export const runGetNewData = async (inputParams) => {
  * @returns {Promise<boolean>} True when process completes
  */
 export const runRestartAutoScraper = async () => {
-  await import("./scrape-auto.js");
+  const { runOnce } = await import("./scrape-auto.js");
+  await runOnce();
+  console.log("AHHHHHHHHHHH");
 
   return true;
 };
