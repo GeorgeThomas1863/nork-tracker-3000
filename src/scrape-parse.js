@@ -13,7 +13,7 @@ import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics, runGetNewPics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
 import { postComboLoopTG } from "./combo-post.js";
-import { scrapeKCNA, scrapeHourly } from "../scraper.js";
+import { startScraper } from "../scraper.js";
 
 /**
  * Parses and processes commands from frontend request
@@ -141,17 +141,17 @@ export const runGetNewData = async (inputParams) => {
 // };
 
 export const runRestartAutoScraper = async () => {
-  const data = await scrapeHourly(runOnce);
+  const data = await startScraper();
   console.log(data);
 
   return true;
 };
 
 // Export a function to run once
-export const runOnce = async () => {
-  await scrapeKCNA();
-  return "FINISHED SCRAPE";
-};
+// export const runOnce = async () => {
+//   await scrapeKCNA();
+//   return "FINISHED SCRAPE";
+// };
 
 // /**
 //  * Dynamically the automatic scraper process for pics AND articles
