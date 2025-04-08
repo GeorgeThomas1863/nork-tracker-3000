@@ -17,6 +17,16 @@ export const indexDisplay = (req, res) => {
 };
 
 /**
+ * Renders the admin page
+ * @function adminDisplay
+ * @param {import('express').Request} req - Express request object
+ * @param {import('express').Response} res - Express response object
+ */
+export const adminDisplay = (req, res) => {
+  res.render("admin");
+};
+
+/**
  * Renders the 404 Not Found error page
  * @function display404
  * @param {import('express').Request} req - Express request object

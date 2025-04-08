@@ -8,7 +8,7 @@
 
 import express from "express";
 
-import { indexDisplay, display404, display500 } from "../controllers/display.js";
+import { indexDisplay, adminDisplay, display404, display500 } from "../controllers/display.js";
 import { parseCommand } from "../src/scrape-parse.js";
 
 /**
@@ -33,6 +33,12 @@ router.post("/scrape-submit-route", parseCommand);
  * @param {import('express').Response} res - Express response object
  */
 router.get("/", indexDisplay);
+
+/**
+ * display admin route
+ * @route GET /admin/*
+ */
+router.use("/admin", adminDisplay);
 
 /**
  * 404 handler - catches requests to non-existent routes
