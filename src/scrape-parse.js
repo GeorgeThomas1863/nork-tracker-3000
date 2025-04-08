@@ -13,6 +13,7 @@ import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics, runGetNewPics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
 import { postComboLoopTG } from "./combo-post.js";
+import { runOnce } from "../scraper.js";
 
 /**
  * Parses and processes commands from frontend request
