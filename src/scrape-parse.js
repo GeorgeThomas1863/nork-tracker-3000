@@ -141,10 +141,8 @@ export const runGetNewData = async (inputParams) => {
 // };
 
 export const runRestartAutoScraper = async () => {
-  const data = await startScraper();
-  console.log(data);
-
-  return true;
+  await startScraper();
+  console.log("STARTING THIS SHIT");
 };
 
 // Export a function to run once
