@@ -1,133 +1,27 @@
+<!-- public/worker-control.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include("includes/head.ejs") %>
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/admin-styles.css" />
-    <script src="/js/admin.js" defer></script>
-    <title>KCNA Admin Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scraper Worker Control</title>
   </head>
   <body>
-    <header>
-      <h1>KCNA Scraper Admin Dashboard</h1>
-      <nav>
-        <a href="/">Back to Main Site</a>
-      </nav>
-    </header>
+    <h1>Scraper Worker Control Panel</h1>
 
-    <main>
-      <% if (error) { %>
-      <div class="error-message">
-        <p><%= error %></p>
+    <div class="panel">
+      <h2>Worker Status</h2>
+      <div id="status" class="status">Loading status...</div>
+
+      <div class="buttons">
+        <button id="start-worker">Start Worker</button>
+        <button id="stop-worker">Stop Worker</button>
+        <button id="restart-worker">Restart Worker</button>
+        <button id="run-now">Run Scrape Now</button>
       </div>
-      <% } %>
 
-      <section class="process-controls">
-        <h2>Process Management</h2>
-
-        <div class="process-grid">
-          <% processes.forEach(process => { %>
-          <div class="process-card" data-process-name="<%= process.name %>">
-            <h3><%= process.name %></h3>
-            <div class="status-badge <%= process.pm2_env.status %>"><%= process.pm2_env.status %></div>
-
-            <div class="process-details">
-              <p>
-                <strong>CPU:</strong>
-                <span class="cpu-usage"><%= Math.round(process.monit.cpu) %>%</span>
-              </p>
-              <p>
-                <strong>Memory:</strong>
-                <span class="memory-usage"><%= Math.round(process.monit.memory / 1024 / 1024) %> MB</span>
-              </p>
-              <p>
-                <strong>Uptime:</strong>
-                <span class="uptime">
-                  <%= process.pm2_env.status === 'online' ? Math.floor((Date.now() - process.pm2_env.pm_uptime) / 1000 / 60) + ' minutes' : 'N/A' %>
-                </span>
-              </p>
-              <p>
-                <strong>Restarts:</strong>
-                <span class="restart-count"><%= process.pm2_env.restart_time %></span>
-              </p>
-            </div>
-
-            <div class="action-buttons">
-              <% if (process.pm2_env.status === 'online') { %>
-              <button class="btn stop-btn" data-action="stop" data-process="<%= process.name %>">Stop</button>
-              <button class="btn restart-btn" data-action="restart" data-process="<%= process.name %>">Restart</button>
-              <% } else { %>
-              <button class="btn start-btn" data-action="start" data-process="<%= process.name %>">Start</button>
-              <% } %>
-
-              <button class="btn logs-btn" data-action="logs" data-process="<%= process.name %>">View Logs</button>
-
-              <% if (process.name === 'kcna-scraper' && process.pm2_env.status === 'online') { %>
-              <button class="btn scrape-btn" data-action="manual-scrape" data-process="<%= process.name %>">Run Scrape Now</button>
-              <% } %>
-            </div>
-          </div>
-          <% }); %>
-        </div>
-      </section>
-
-      <section class="logs-section" id="logs-container" style="display: none">
-        <h2>Process Logs - <span id="logs-process-name"></span></h2>
-        <div class="logs-actions">
-          <button id="refresh-logs" class="btn">Refresh Logs</button>
-          <button id="close-logs" class="btn">Close</button>
-        </div>
-        <pre id="logs-content" class="logs-panel"></pre>
-      </section>
-
-      <section class="system-info">
-        <h2>System Information</h2>
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>Server Time</h3>
-            <p id="server-time"><%= new Date().toLocaleString() %></p>
-          </div>
-
-          <div class="info-card">
-            <h3>Last Scrape</h3>
-            <p id="last-scrape">
-              <% if (lastScrapeTime) { %> <%= new Date(lastScrapeTime).toLocaleString() %> <% } else { %> No scrapes recorded yet <% } %>
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Next Scheduled Scrape</h3>
-            <p id="next-scrape">Loading...</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Scrape History Section -->
-      <section class="scrape-history">
-        <h2>Recent Scrape History</h2>
-        <table class="history-table">
-          <thead>
-            <tr>
-              <th>Date/Time</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% if (scrapeHistory && scrapeHistory.length > 0) { %> <% scrapeHistory.forEach(scrape => { %>
-            <tr>
-              <td><%= new Date(scrape.timestamp).toLocaleString() %></td>
-              <td><span class="scrape-type <%= scrape.type %>"><%= scrape.type %></span></td>
-            </tr>
-            <% }); %> <% } else { %>
-            <tr>
-              <td colspan="2">No scrape history available</td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-      </section>
-    </main>
-
-    <div id="toast" class="toast" style="display: none"></div>
+      <h3>Action Log</h3>
+      <div id="action-log" class="log"></div>
+    </div>
   </body>
 </html>

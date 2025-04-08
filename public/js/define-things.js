@@ -49,6 +49,12 @@ const d = {
   //define return display and make pretty elements
   dataReturnWrapper: document.getElementById("data-return-wrapper"),
   dataReturnElement: document.getElementById("data-return-element"),
+
+  //ADMIN page
+  startWorkerButton: document.getElementById("start-worker"),
+  stopWorkerButton: document.getElementById("stop-worker"),
+  restartWorkerButton: document.getElementById("restart-worker"),
+  runNowButton: document.getElementById("run-now"),
 };
 
 //add in array to obj
