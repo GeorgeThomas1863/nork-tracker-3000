@@ -13,7 +13,7 @@ import { runPostArticles, postArticlesLoop } from "./articles/articles-post.js";
 import { scrapePicsClick, runScrapePics, runGetNewPics } from "./pics/pics-scrape.js";
 import { uploadPicsFS } from "./pics/pics-main.js";
 import { postComboLoopTG } from "./combo-post.js";
-import { runOnce } from "../scraper.js";
+import { scrapeKCNA, scrapeHourly } from "../scraper.js";
 
 /**
  * Parses and processes commands from frontend request
@@ -132,18 +132,39 @@ export const runGetNewData = async (inputParams) => {
   return true;
 };
 
-/**
- * Dynamically the automatic scraper process for pics AND articles
- * @function runRestartAutoScraper
- * @returns {Promise<boolean>} True when process completes
- */
+//--------------
+// export const scrapeKCNA = async () => {
+//   await runScrapeArticles();
+//   await runPostArticles();
+//   await runScrapePics();
+//   console.log("FINISHED SCRAPE");
+// };
+
 export const runRestartAutoScraper = async () => {
-  const { runOnce } = await import("./scrape-auto.js");
-  await runOnce();
-  console.log("AHHHHHHHHHHH");
+  const data = await scrapeHourly(runOnce);
+  console.log(data);
 
   return true;
 };
+
+// Export a function to run once
+export const runOnce = async () => {
+  await scrapeKCNA();
+  return "FINISHED SCRAPE";
+};
+
+// /**
+//  * Dynamically the automatic scraper process for pics AND articles
+//  * @function runRestartAutoScraper
+//  * @returns {Promise<boolean>} True when process completes
+//  */
+// export const runRestartAutoScraper = async () => {
+//   const { runOnce } = await import("./scrape-auto.js");
+//   await runOnce();
+//   console.log("AHHHHHHHHHHH");
+
+//   return true;
+// };
 
 //TODO below function
 /**

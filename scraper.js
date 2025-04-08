@@ -58,11 +58,11 @@ export const scrapeKCNA = async () => {
   console.log("FINISHED SCRAPE");
 };
 
-// Export a function to run once
-export const runOnce = async () => {
-  await scrapeKCNA();
-  return "FINISHED SCRAPE";
-};
+// // Export a function to run once
+// export const runOnce = async () => {
+//   await scrapeKCNA();
+//   return "FINISHED SCRAPE";
+// };
 
 //PASS IN FUNCTION AS PARAM TO EXECUTE HOURLY
-scrapeHourly(scrapeKCNA);
+// scrapeHourly(scrapeKCNA);
