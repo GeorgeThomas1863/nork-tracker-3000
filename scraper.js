@@ -10,9 +10,6 @@ import { runScrapeArticles } from "./src/articles/articles-scrape.js";
 import { runPostArticles } from "./src/articles/articles-post.js";
 import { runScrapePics } from "./src/pics/pics-scrape.js";
 
-// //PASS IN FUNCTION AS PARAM TO EXECUTE HOURLY
-scrapeHourly(scrapeKCNA);
-
 console.log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
 
 /**
@@ -66,3 +63,6 @@ export const runOnce = async () => {
   await scrapeKCNA();
   return "FINISHED SCRAPE";
 };
+
+//PASS IN FUNCTION AS PARAM TO EXECUTE HOURLY
+scrapeHourly(scrapeKCNA);
