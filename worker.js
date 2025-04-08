@@ -1,6 +1,6 @@
-import { runScrapeArticles } from "./articles/articles-scrape.js";
-import { runPostArticles } from "./articles/articles-post.js";
-import { runScrapePics } from "./pics/pics-scrape.js";
+import { runScrapeArticles } from "./src/articles/articles-scrape.js";
+import { runPostArticles } from "./src/articles/articles-post.js";
+import { runScrapePics } from "./src/pics/pics-scrape.js";
 
 console.log("Worker process started");
 
