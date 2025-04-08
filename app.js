@@ -1,5 +1,8 @@
 //TO DO:
 
+//1. SEPARATE THIS SHIT OUT INTO 2 SEPARATE APPS
+//1. BASICALLY RESTART
+
 //1. get pull single url WORKING
 //1. add some sort of "getting data / loading" screen
 
