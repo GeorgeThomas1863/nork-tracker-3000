@@ -1,7 +1,7 @@
 const apps = [
   {
     name: "app",
-    // existing config...
+    script: "app.js",
   },
   {
     name: "scraper-worker",
